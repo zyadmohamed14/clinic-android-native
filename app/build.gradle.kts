@@ -67,19 +67,24 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+
     }
     buildFeatures {
         compose = true
         buildConfig = true
         resValues = true
     }
+
+
 }
 
 dependencies {
+    implementation("androidx.compose.material:material-icons-extended")
     // Core
+    implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
-
+    implementation(libs.material3.xml)
     // Compose (BOM manages all versions — never specify compose versions individually)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)

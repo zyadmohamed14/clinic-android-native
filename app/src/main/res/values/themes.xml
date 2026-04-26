@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Clinic_native" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Base theme — Compose doesn't use XML themes much,
+     but we need this for the window background and splash -->
+    <style name="Theme.ClinicApp" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Splash screen theme — shows before Compose loads -->
+    <style name="Theme.ClinicApp.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#0891B2</item>
+        <item name="postSplashScreenTheme">@style/Theme.ClinicApp</item>
+    </style>
 </resources>
+
+
