@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -15,15 +16,17 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.google.android.material.progressindicator.CircularProgressIndicator
+
 
 sealed class AppButtonType {
     data object Filled : AppButtonType()
@@ -171,5 +174,37 @@ private fun AppButtonContent(
                 style = MaterialTheme.typography.labelLarge,
             )
         }
+    }
+}
+
+
+@Composable
+fun AppBarButton(
+    icon: ImageVector,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    isTransparent: Boolean = false,
+) {
+    Surface(
+        onClick = onClick,
+        modifier = modifier
+            .padding(4.dp)
+            .shadow(
+                elevation = if (isTransparent) 0.dp else 2.dp,
+                shape = RoundedCornerShape(50),
+            ),
+        shape = RoundedCornerShape(50),
+        color = if (isTransparent)
+            Color.Black.copy(alpha = 0.3f)    // dark overlay on images
+        else
+            MaterialTheme.colorScheme.surface,
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = if (isTransparent) Color.White
+            else MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(8.dp),
+        )
     }
 }
