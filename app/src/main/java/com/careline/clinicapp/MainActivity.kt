@@ -25,16 +25,19 @@ import android.content.res.Configuration
 
 import androidx.compose.ui.platform.LocalContext
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
+import com.careline.clinicapp.core.navigation.LoginScreen
+import com.careline.clinicapp.core.navigation.LoginViewModel
 import jakarta.inject.Inject
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
-    @Inject
-    lateinit var authEventBus: AuthEventBus
+  //  @Inject
+     var authEventBus: AuthEventBus = AuthEventBus()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
+      //   authEventBus = AuthEventBus()
+        val loginViewModel = LoginViewModel()
         setContent {
             var isDark by remember { mutableStateOf(false) }
             var isArabic by remember { mutableStateOf(true) }
@@ -55,9 +58,8 @@ class MainActivity : ComponentActivity() {
                             isArabic = !isArabic
                         }
                     ) {
-                        NavGraph(
-                            authEventBus
-                        )
+                        //NavGraph(authEventBus)
+                        LoginScreen(loginViewModel)
                     }
                 }
             }

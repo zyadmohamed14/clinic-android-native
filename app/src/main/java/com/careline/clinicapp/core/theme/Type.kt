@@ -2,6 +2,7 @@ package com.careline.clinicapp.core.theme
 
 
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -51,6 +52,7 @@ val CarLineTypography = Typography(
         fontWeight = FontWeight.Bold,
         fontSize = 48.sp,
         lineHeight = 56.sp,
+
     ),
     headlineLarge = TextStyle(
         fontFamily = PoppinsFamily,
@@ -75,6 +77,7 @@ val CarLineTypography = Typography(
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
+
     ),
     titleSmall = TextStyle(
         fontFamily = PoppinsFamily,
@@ -93,6 +96,7 @@ val CarLineTypography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
+
     ),
     bodySmall = TextStyle(
         fontFamily = PoppinsFamily,
