@@ -13,7 +13,9 @@ android {
         version = release(36)
       //  compileSdk = 36
     }
-
+    androidResources{
+        generateLocaleConfig = true
+    }
     defaultConfig {
         applicationId = "com.careline.clinicapp"
         minSdk = 24
@@ -80,6 +82,7 @@ android {
 
 dependencies {
     implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.lottie.compose)
     // Core
     implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.core.ktx)
@@ -91,6 +94,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit.junit)
     // implementation(libs.androidx.compose.material3.i)
     debugImplementation(libs.androidx.compose.ui.tooling)
