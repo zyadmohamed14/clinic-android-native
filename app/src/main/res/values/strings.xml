@@ -1,3 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clinic_native</string>
+<string name="app_name">Clinic_native</string>
+<!-- Auth Guard -->
+<string name="auth_guard_title">Login Required</string>
+<string name="auth_guard_message">This feature requires you to be logged in.\nWould you like to log in now?</string>
+<string name="auth_guard_later">Later</string>
+
+<!-- Auth -->
+<string name="auth_user">User</string>
+<string name="auth_login">Login</string>
+<string name="auth_signup">Sign Up</string>
+<string name="auth_email">Email</string>
+<string name="auth_password">Password</string>
+<string name="auth_confirm_password">Confirm Password</string>
+<string name="auth_full_name">Full Name</string>
+<string name="auth_phone">Phone Number</string>
+<string name="auth_continue_as_guest">Continue as Guest</string>
+<string name="auth_create_account">Create Account</string>
+<string name="auth_welcome_back">Welcome Back</string>
+<string name="auth_login_subtitle">Login to continue your health journey</string>
+<string name="auth_create_account_title">Create Account</string>
+<string name="auth_signup_subtitle">Join us for better healthcare</string>
+<string name="auth_sign_in_with_google">Sign in with Google</string>
+<string name="auth_or">OR</string>
+<string name="auth_google_sign_in_failed">Failed Sign in with Google</string>
+
+<!-- OTP -->
+<string name="auth_otp_title">Verification</string>
+<string name="auth_otp_headline">Check your email</string>
+<string name="auth_otp_subtitle">We sent a 6-digit code to\n%s</string>
+<string name="auth_otp_verify">Verify</string>
+<string name="auth_otp_no_code">Didn\'t receive the code?</string>
+<string name="auth_otp_resend">Resend</string>
+<string name="auth_otp_resend_success">The code was successfully resent</string>
+<string name="auth_otp_resend_in">Resend in</string>
+<string name="auth_otp_seconds">seconds</string>
+
+<!-- Forgot Password -->
+<string name="auth_forgot_password_title">Forgot Password</string>
+<string name="auth_forgot_password_headline">Recover Password</string>
+<string name="auth_forgot_password_subtitle">Enter your email and we\'ll send you a verification code</string>
+<string name="auth_forgot_password_send">Send Code</string>
+<string name="auth_forgot_password_back_to_login">Back to Login</string>
+
+<!-- Reset Password -->
+<string name="auth_reset_password_title">Reset Password</string>
+<string name="auth_reset_password_headline">Set New Password</string>
+<string name="auth_reset_password_subtitle">Enter the code sent to</string>
+<string name="auth_reset_password_new_password">New Password</string>
+<string name="auth_reset_password_submit">Reset Password</string>
+<string name="auth_reset_password_success">Password reset successfully</string>
+<string name="auth_reset_password_otp_required">OTP Required</string>
+
+<!-- Onboarding -->
+<string name="onboarding_page1_title">Track Your Turn Live</string>
+<string name="onboarding_page1_subtitle">No more waiting in crowded rooms. Monitor exactly how many patients are ahead of you from home.</string>
+
+<string name="onboarding_page2_title">Arrive Just in Time</string>
+<string name="onboarding_page2_subtitle">Receive smart notifications telling you exactly when to head to the clinic based on the current live queue</string>
+
+<string name="onboarding_page3_title">Discover Top Clinics</string>
+<string name="onboarding_page3_subtitle">Find specialist doctors near you with verified patient ratings and real-time availability.</string>
+
+<string name="onboarding_page4_title">Track Your Turn Live</string>
+<string name="onboarding_page4_subtitle">No more waiting in crowded rooms. Monitor exactly how many patients are ahead of you from home.</string>
+
+<string name="onboarding_skip">Skip</string>
+<string name="onboarding_next">Next</string>
+<string name="onboarding_start">Get Started</string>
+
+<!-- Medication -->
+<string name="medication_title">Medications</string>
+<string name="medication_count">%d medications</string>
+<string name="medication_filter_all">All</string>
+<string name="medication_filter_daily">Daily</string>
+<string name="medication_filter_weekly">Weekly</string>
+<string name="medication_filter_as_needed">As Needed</string>
+<string name="medication_stat_daily">Daily</string>
+<string name="medication_stat_weekly">Weekly</string>
+<string name="medication_stat_as_needed">As Needed</string>
+<string name="medication_times_once">Once</string>
+<string name="medication_times_multiple">%d times</string>
+<string name="medication_group_daily">Daily</string>
+<string name="medication_group_weekly">Weekly</string>
+<string name="medication_group_as_needed">As Needed</string>
+<string name="medication_delete_title">Delete Medication</string>
+<string name="medication_delete_confirm">Are you sure you want to delete %s?</string>
+<string name="medication_delete">Delete</string>
+<string name="medication_cancel">Cancel</string>
+
+<!-- Home -->
+<string name="home_header_title">Book at your clinic easily</string>
+<string name="home_header_subtitle">Track your turn without waiting</string>
+<string name="home_no_notifications">No new notifications</string>
+
+<!-- Home Sections -->
+<string name="home_sections_nearby">Nearby Clinics</string>
+<string name="home_sections_all_clinics">All Clinics</string>
+<string name="home_sections_featured">Featured Clinics</string>
+<string name="home_sections_no_more">No more available</string>
+<string name="home_sections_empty_title">No Clinics</string>
+<string name="home_sections_empty_subtitle">No clinics are currently available, please try again later</string>
+
+<!-- Last Booking -->
+<string name="home_last_booking_badge">Last Booking</string>
+<string name="home_last_booking_queue_position">Your Turn</string>
+<string name="home_last_booking_your_turn">Your turn now</string>
+<string name="home_last_booking_people_ahead">%d people ahead of you</string>
+<string name="home_last_booking_no_bookings_title">No Bookings</string>
+<string name="home_last_booking_no_bookings_subtitle">You currently have no confirmed bookings</string>
+
+<!-- Last Booking Tips -->
+<string name="home_last_booking_tip_pending_title">Waiting for Approval</string>
+<string name="home_last_booking_tip_pending_body">Your booking is under review by the clinic. You\'ll be notified once confirmed.</string>
+<string name="home_last_booking_tip_confirmed_title">Booking Confirmed ✓</string>
+<string name="home_last_booking_tip_confirmed_body">You\'re in the queue. %d people ahead of you.</string>
+<string name="home_last_booking_tip_almost_title">Almost Your Turn!</string>
+<string name="home_last_booking_tip_almost_body">Only %d people ahead of you. Get ready.</string>
+<string name="home_last_booking_tip_your_turn_title">It\'s Your Turn!</string>
+<string name="home_last_booking_tip_your_turn_body">Head to the clinic now. Don\'t be late or your booking may be cancelled.</string>
+<string name="home_last_booking_tip_cancelled_title">Booking Cancelled</string>
+<string name="home_last_booking_tip_cancelled_body">This booking was cancelled. You can make a new appointment anytime.</string>
+<string name="home_last_booking_tip_in_doctor_title">You are with the doctor</string>
+<string name="home_last_booking_tip_in_doctor_body">You are currently being examined. We wish you a speedy recovery.</string>
+<string name="home_last_booking_tip_completed_title">Visit Completed</string>
+<string name="home_last_booking_tip_completed_body">Thanks for your visit! Don\'t forget to rate your experience.</string>
+<string name="home_last_booking_tip_dismiss">Tap anywhere to dismiss</string>
+
+<!-- Favorites -->
+<string name="favorites_title">My Favorites</string>
+<string name="favorites_empty_title">No Favorites</string>
+<string name="favorites_empty_subtitle">You haven\'t added any clinics to your favorites yet</string>
+<string name="favorites_find_clinic">Find a Clinic</string>
+<string name="favorites_retry">Try Again</string>
+<string name="favorites_remove">Remove from Favorites</string>
+
+<!-- Bookings -->
+<string name="bookings_title">My Bookings</string>
+<string name="bookings_auth_required_title">Login Required</string>
+<string name="bookings_auth_required_subtitle">Sign in to view and manage your bookings</string>
+<string name="bookings_empty_title">No Bookings</string>
+<string name="bookings_empty_subtitle">You haven\'t made any appointments yet</string>
+<string name="bookings_find_clinic">Find a Clinic</string>
+<string name="bookings_retry">Try Again</string>
+<string name="bookings_doctor">Doctor</string>
+<string name="bookings_date">Date</string>
+<string name="bookings_time">Time</string>
+<string name="bookings_turn_number">Turn Number</string>
+<string name="bookings_reviewed">Reviewed</string>
+
+<string name="bookings_wait_turns_label">Queue</string>
+<string name="bookings_wait_turns_your_turn">Your turn now</string>
+<string name="bookings_wait_turns_count">%d ahead of you</string>
+
+<!-- Booking Detail -->
+<string name="booking_detail_title">Booking Details</string>
+<string name="booking_detail_appointment_info">Appointment Info</string>
+<string name="booking_detail_patient_info">Patient Info</string>
+<string name="booking_detail_patient_name">Name</string>
+<string name="booking_detail_patient_phone">Phone</string>
+<string name="booking_detail_specialty">Specialty</string>
+<string name="booking_detail_notes">Notes</string>
+<string name="booking_detail_cancel_booking">Cancel Booking</string>
+<string name="booking_detail_cancel_confirm_title">Cancel Booking</string>
+<string name="booking_detail_cancel_confirm_body">Are you sure you want to cancel this appointment?</string>
+<string name="booking_detail_cancel_confirm_yes">Yes, Cancel</string>
+<string name="booking_detail_cancel_success">Booking cancelled successfully</string>
+
+<!-- Booking Status -->
+<string name="booking_status_confirmed">Confirmed</string>
+<string name="booking_status_cancelled">Cancelled</string>
+<string name="booking_status_pending">Pending</string>
+<string name="booking_status_in_doctor">In Doctor</string>
+<string name="booking_status_completed">Completed</string>
+
+<!-- Reviews -->
+<string name="review_form_title">Add Your Review</string>
+<string name="review_form_rating_label">Your Rating</string>
+<string name="review_form_comment_label">Your Comment</string>
+<string name="review_form_comment_hint">Share your experience with this clinic...</string>
+<string name="review_form_submit">Submit Review</string>
+<string name="review_form_success">Your review was submitted successfully, thank you!</string>
+
+<!-- Booking Flow -->
+<string name="booking_choose_date">Choose Date</string>
+<string name="booking_choose_time">Choose Time</string>
+<string name="booking_no_slots">No available slots for this day</string>
+<string name="booking_continue">Continue</string>
+<string name="booking_confirm_title">Confirm Your Booking</string>
+<string name="booking_confirm_subtitle">Please review your booking details before confirming</string>
+<string name="booking_confirm_button">Confirm Booking</string>
+<string name="booking_confirmed_title">Booking Confirmed!</string>
+<string name="booking_confirmed_body">Your appointment has been booked successfully</string>
+<string name="booking_confirmed_done">Done</string>
+<string name="booking_payment_note">The clinic will contact you for payment instructions once approved</string>
+<string name="booking_your_info">Your Information</string>
+<string name="booking_full_name">Full Name</string>
+<string name="booking_full_name_hint">Enter your full name</string>
+<string name="booking_phone">Phone Number</string>
+<string name="booking_phone_hint">Enter your phone number</string>
+<string name="booking_notes_optional">Notes (Optional)</string>
+<string name="booking_notes_hint">Any symptoms or notes for the doctor...</string>
+<string name="booking_reviewed">Reviewed</string>
+<string name="booking_missing_info">Missing required booking information</string>
+
+<!-- Booking Summary -->
+<string name="booking_summary_clinic">Clinic</string>
+<string name="booking_summary_doctor">Doctor</string>
+<string name="booking_summary_patient">Patient</string>
+<string name="booking_summary_phone">Phone</string>
+<string name="booking_summary_date">Date</string>
+<string name="booking_summary_time">Time</string>
+<string name="booking_summary_notes">Notes</string>
+
+<!-- Bottom Bar -->
+<string name="booking_bottom_bar_fee_label">Consultation Fee</string>
+<string name="booking_bottom_bar_book_now">Book Now</string>
+
+<!-- Stepper -->
+<string name="booking_stepper_date_time">Date &amp; Time</string>
+<string name="booking_stepper_your_info">Your Info</string>
+<string name="booking_stepper_confirm">Confirm</string>
+
+<!-- Clinic Screen -->
+<string name="clinic_choose_date">Choose Date</string>
+<string name="clinic_status_open">Open</string>
+<string name="clinic_status_closed">Closed</string>
+<string name="clinic_available_doctors">Available Doctors (%d)</string>
+<string name="clinic_no_doctors">No doctors available on this date</string>
+<string name="clinic_no_slots_today">No available slots today</string>
+<string name="clinic_choose_time">Choose Time</string>
+<string name="clinic_remaining">%d remaining</string>
+<string name="clinic_selected_summary_clear">Clear selection</string>
+<string name="clinic_book_now">Book Now</string>
+<string name="clinic_currency">EGP</string>
+<string name="clinic_years_exp">%d yrs exp.</string>
+
+<!-- Clinic Tabs -->
+<string name="clinic_tab_overview">Overview</string>
+<string name="clinic_tab_booking">Booking</string>
+<string name="clinic_tab_reviews">Reviews</string>
+
+<!-- Clinic Info -->
+<string name="clinic_info_about">About</string>
+<string name="clinic_info_opening_hours">Opening Hours</string>
+<string name="clinic_info_location">Location</string>
+<string name="clinic_info_contact">Contact</string>
+<string name="clinic_info_call">Call</string>
+<string name="clinic_info_whatsapp">WhatsApp</string>
+<string name="clinic_info_open_maps">Open Maps</string>
+<string name="clinic_info_show_more">Show more</string>
+<string name="clinic_info_show_less">Show less</string>
+
+<!-- Clinic Services -->
+<string name="clinic_services_title">Services</string>
+<string name="clinic_services_available">Available Services</string>
+<string name="clinic_services_facilities">Facilities</string>
+<string name="clinic_services_insurance">Accepted Insurance</string>
+<string name="clinic_services_empty_title">No Services</string>
+<string name="clinic_services_empty_subtitle">No service information has been added yet</string>
+
+<!-- Clinic Reviews -->
+<string name="clinic_reviews_title">Reviews</string>
+<string name="clinic_reviews_patients_reviews">Patient Reviews</string>
+<string name="clinic_reviews_empty">No reviews yet</string>
+<string name="clinic_reviews_with_doctor">With: %s</string>
+<string name="clinic_reviews_total">%d reviews</string>
+
+<!-- Search -->
+<string name="search_hint">Search for a clinic or doctor...</string>
+<string name="search_initial_title">Search Clinics</string>
+<string name="search_initial_hint">Start typing to find a clinic or doctor</string>
+<string name="search_empty_title">No Results</string>
+<string name="search_no_results">We couldn\'t find any clinic matching your search</string>
+
+<!-- Search Filter -->
+<string name="search_filter_label">Filter</string>
+<string name="search_filter_title">Filter Results</string>
+<string name="search_filter_clear_all">Clear All</string>
+<string name="search_filter_apply">Apply</string>
+<string name="search_filter_all">All</string>
+<string name="search_filter_availability">Availability</string>
+<string name="search_filter_open">Open</string>
+<string name="search_filter_closed">Closed</string>
+<string name="search_filter_min_rating">Min Rating</string>
+
+<!-- Settings -->
+<string name="settings_guest_title">Welcome, Guest</string>
+<string name="settings_guest_subtitle">Sign in to access all features</string>
+
+<string name="settings_section_account">Account</string>
+<string name="settings_section_preferences">Preferences</string>
+<string name="settings_section_support">Support</string>
+<string name="settings_section_legal">Legal</string>
+
+<!-- Account -->
+<string name="settings_account_profile">Profile</string>
+<string name="settings_account_profile_sub">View and edit your information</string>
+<string name="settings_account_change_password">Change Password</string>
+<string name="settings_account_change_password_sub">Update your password</string>
+<string name="settings_account_bookings">My Bookings</string>
+<string name="settings_account_bookings_sub">Manage your appointments</string>
+
+<!-- Preferences -->
+<string name="settings_preferences_notifications">Notifications</string>
+<string name="settings_preferences_notifications_sub">Manage app notifications</string>
+<string name="settings_preferences_language">Language</string>
+<string name="settings_preferences_arabic">العربية</string>
+<string name="settings_preferences_english">English</string>
+<string name="settings_preferences_choose_language">Choose Language</string>
+<string name="settings_preferences_dark_mode">Dark Mode</string>
+<string name="settings_preferences_dark_on">Enabled</string>
+<string name="settings_preferences_dark_off">Disabled</string>
+
+<!-- Support -->
+<string name="settings_support_help">Help Center</string>
+<string name="settings_support_help_sub">FAQs and support</string>
+<string name="settings_support_contact">Contact Us</string>
+<string name="settings_support_contact_sub">Reach our support team</string>
+<string name="settings_support_rate">Rate the App</string>
+<string name="settings_support_rate_sub">Share your feedback</string>
+
+<!-- Legal -->
+<string name="settings_legal_terms">Terms &amp; Conditions</string>
+<string name="settings_legal_terms_sub">App usage terms</string>
+<string name="settings_legal_privacy">Privacy Policy</string>
+<string name="settings_legal_privacy_sub">How we protect your data</string>
+<string name="settings_legal_about">About</string>
+<string name="settings_legal_version">Version 1.0.0</string>
+<string name="settings_legal_delete_account">Delete Account</string>
+<string name="settings_legal_delete_account_sub">Terms and conditions apply</string>
+<string name="settings_legal_delete_confirm">Are you sure you want to delete your account? This action cannot be undone.</string>
+<string name="settings_legal_delete_yes">Yes, Delete</string>
+
+<string name="settings_logout">Log Out</string>
+<string name="settings_logout_confirm">Are you sure you want to log out?</string>
+
+<!-- Validation -->
+<string name="validation_email_required">Email is required</string>
+<string name="validation_email_invalid">Invalid email format</string>
+<string name="validation_password_required">Password is required</string>
+<string name="validation_password_min_length">Password must be at least 6 characters</string>
+<string name="validation_password_mismatch">Passwords do not match</string>
+<string name="validation_name_required">Name is required</string>
+<string name="validation_name_too_short">Name must be at least 2 characters</string>
+<string name="validation_phone_required">Phone number is required</string>
+
+<!-- Errors -->
+<string name="error_network_title">No Internet Connection</string>
+<string name="error_network_subtitle">Check your internet connection and try again</string>
+<string name="error_network_action">Retry</string>
+<string name="error_network_timeout">Connection timeout</string>
+<string name="error_network_cancelled">Request cancelled</string>
+<string name="error_network_connection">Network connection error</string>
+<string name="error_network_certificate">Security certificate error</string>
+<string name="error_network_server_connection">Failed to connect to server</string>
+<string name="error_network_no_response">No response from server</string>
+
+<string name="error_server_title">Server Error</string>
+<string name="error_server_subtitle">We apologize for this error. Please try again later</string>
+<string name="error_server_action">Try Again</string>
+<string name="error_server_bad_request">Invalid request</string>
+<string name="error_server_unauthorized">Session expired</string>
+<string name="error_server_forbidden">You are not authorized for this action</string>
+<string name="error_server_not_found">Requested data not found</string>
+<string name="error_server_invalid_data">Invalid data</string>
+<string name="error_server_internal">Server error, please try again later</string>
+<string name="error_server_unexpected">Unexpected error occurred</string>
+<string name="error_server_invalid_credentials">Invalid email or password</string>
+<string name="error_server_email_taken">Email is already in use</string>
+<string name="error_server_phone_taken">Phone number is already in use</string>
+<string name="error_server_too_many_requests">Too many attempts, please wait and try again</string>
+
+<string name="error_auth_title">Authentication Error</string>
+<string name="error_auth_invalid_credentials">Invalid email or password</string>
+<string name="error_auth_session_expired">Session expired, please login again</string>
+
+<string name="error_cache_title">Local Data Error</string>
+<string name="error_cache_subtitle">An error occurred while accessing saved data</string>
+<string name="error_cache_action">Retry</string>
+
+<string name="error_validation_title">Validation Error</string>
+<string name="error_validation_subtitle">Please check your input and try again</string>
+<string name="error_validation_action">OK</string>
+
+<string name="error_unknown_title">Unexpected Error</string>
+<string name="error_unknown_subtitle">We apologize for this error. Try again</string>
+<string name="error_unknown_action">Try Again</string>
+
+<!-- Specific Errors -->
+<string name="error_clinics_featured">Failed to load featured clinics</string>
+<string name="error_clinics_nearby">Failed to load nearby clinics</string>
+<string name="error_clinics_all">Failed to load clinics list</string>
+<string name="error_clinics_details">Failed to load clinic details</string>
+<string name="error_clinics_doctors">Failed to load doctors list</string>
+<string name="error_clinics_booking">Failed to book appointment</string>
+<string name="error_clinics_booking_failed">Booking failed. Please try again</string>
+<string name="error_clinics_toggle_favorite">Failed to toggle favorite</string>
+
+<string name="error_booking_list">Failed to load bookings</string>
+<string name="error_booking_create">Failed to create appointment</string>
+
+<string name="error_doctor_slots">Failed to load doctor slots</string>
+
+<!-- Common -->
+<string name="common_retry">Retry</string>
+<string name="common_try_again">Try Again</string>
+<string name="common_cancel">Cancel</string>
+<string name="common_ok">OK</string>
+<string name="common_no">No</string>
+<string name="common_login">Login</string>
+
+<!-- Profile -->
+<string name="profile_app_bar_title">Complete Your Profile</string>
+<string name="profile_completion_title">Profile Completion</string>
+<string name="profile_completion_done">Done</string>
+<string name="profile_completion_of_5">%d of 5 fields completed</string>
+<string name="profile_completion_hint0">Fill your name to get started</string>
+<string name="profile_completion_hint1">Great start! Keep going 💪</string>
+<string name="profile_completion_hint2">You\'re almost halfway there!</string>
+<string name="profile_completion_hint3">Almost there, 2 fields left!</string>
+<string name="profile_completion_hint4">One more field to complete your profile!</string>
+
+<string name="profile_section_personal">Personal Information</string>
+<string name="profile_section_medical">Medical Information</string>
+<string name="profile_section_emergency">Emergency Contact</string>
+
+<string name="profile_field_full_name">Full Name</string>
+<string name="profile_field_date_of_birth">Date of Birth</string>
+<string name="profile_field_gender">Gender</string>
+<string name="profile_field_blood_type">Blood Type (Optional)</string>
+<string name="profile_field_chronic_diseases">Chronic Diseases (Optional)</string>
+<string name="profile_field_chronic_hint">e.g. Diabetes, Hypertension…</string>
+<string name="profile_field_emergency_contact">Emergency contact number</string>
+
+<string name="profile_gender_male">Male</string>
+<string name="profile_gender_female">Female</string>
+
+<string name="profile_save">Save Profile</string>
+<string name="profile_retry">Try Again</string>
+
+<string name="profile_validation_name_required">Name is required</string>
+<string name="profile_validation_birth_date_required">Please select your date of birth</string>
+<string name="profile_validation_gender_required">Please select your gender</string>
+<string name="profile_validation_emergency_required">Emergency contact is required</string>
+
+<string name="profile_save_success">Profile saved successfully! 🎉</string>
+<string name="profile_no_changes">No changes were made</string>
+
+<!-- Location -->
+<string name="location_access_needed">Location access needed</string>
+<string name="location_enable_manually">Enable it manually in Settings</string>
+<string name="location_why_we_use">We use your location only to show nearby clinics.</string>
+<string name="location_open_settings">Open Settings</string>
+<string name="location_enter_manually">Enter location manually instead</string>
+<string name="location_disabled_title">Location Services Disabled</string>
+<string name="location_enable_prompt">Tap here to enable them now</string>
+
+<string name="location_steps_title_android">Android steps</string>
+<string name="location_steps_title_ios">iOS steps</string>
+
+<!-- Android Location Steps -->
+<string name="location_android_step1">Tap \"Open Settings\" below</string>
+<string name="location_android_step2">Tap Permissions</string>
+<string name="location_android_step3">Tap Location</string>
+<string name="location_android_step4">Select \"Allow only while using the app\"</string>
+<string name="location_android_step5">Come back — we\'ll detect it automatically</string>
+
+<!-- iOS Location Steps -->
+<string name="location_ios_step1">Tap \"Open Settings\" below</string>
+<string name="location_ios_step2">Tap Location</string>
+<string name="location_ios_step3">Select \"While Using the App\"</string>
+<string name="location_ios_step4">Come back — we\'ll detect it automatically</string>
+
 </resources>

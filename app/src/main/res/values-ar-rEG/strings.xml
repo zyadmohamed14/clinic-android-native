@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clinic_native</string>
+    <!-- Auth Guard -->
+    <string name="auth_guard_title">تسجيل الدخول مطلوب</string>
+    <string name="auth_guard_message">هذه الخاصية تتطلب تسجيل الدخول.\nهل تريد تسجيل الدخول الآن؟</string>
+    <string name="auth_guard_later">لاحقاً</string>
+
+    <!-- Auth -->
+    <string name="auth_user">مستخدم</string>
+    <string name="auth_login">تسجيل الدخول</string>
+    <string name="auth_signup">إنشاء حساب</string>
+    <string name="auth_email">البريد الإلكتروني</string>
+    <string name="auth_password">كلمة المرور</string>
+    <string name="auth_confirm_password">تأكيد كلمة المرور</string>
+    <string name="auth_full_name">الاسم الكامل</string>
+    <string name="auth_phone">رقم الهاتف</string>
+    <string name="auth_continue_as_guest">المتابعة كضيف</string>
+    <string name="auth_create_account">إنشاء حساب</string>
+    <string name="auth_welcome_back">مرحباً بعودتك</string>
+    <string name="auth_login_subtitle">سجل دخولك لمتابعة رحلتك الصحية</string>
+    <string name="auth_create_account_title">إنشاء حساب جديد</string>
+    <string name="auth_signup_subtitle">انضم إلينا للحصول على رعاية صحية أفضل</string>
+    <string name="auth_sign_in_with_google">الدخول باستخدام جوجل</string>
+    <string name="auth_or">أو</string>
+    <string name="auth_google_sign_in_failed">فشل تسجيل الدخول باستخدام جوجل</string>
+
+    <!-- OTP -->
+    <string name="auth_otp_title">التحقق</string>
+    <string name="auth_otp_headline">تحقق من بريدك الإلكتروني</string>
+    <string name="auth_otp_subtitle">أرسلنا رمزاً مكوناً من 6 أرقام إلى\n%s</string>
+    <string name="auth_otp_verify">تحقق</string>
+    <string name="auth_otp_no_code">لم تستلم الرمز؟</string>
+    <string name="auth_otp_resend">إعادة الإرسال</string>
+    <string name="auth_otp_resend_success">تم إعادة إرسال الرمز بنجاح</string>
+    <string name="auth_otp_resend_in">إعادة الإرسال بعد</string>
+    <string name="auth_otp_seconds">ثانية</string>
+
+    <!-- Forgot Password -->
+    <string name="auth_forgot_password_title">نسيت كلمة المرور</string>
+    <string name="auth_forgot_password_headline">استعادة كلمة المرور</string>
+    <string name="auth_forgot_password_subtitle">أدخل بريدك الإلكتروني وسنرسل لك رمز التحقق</string>
+    <string name="auth_forgot_password_send">إرسال الرمز</string>
+    <string name="auth_forgot_password_back_to_login">العودة لتسجيل الدخول</string>
+
+    <!-- Reset Password -->
+    <string name="auth_reset_password_title">إعادة تعيين كلمة المرور</string>
+    <string name="auth_reset_password_headline">تعيين كلمة مرور جديدة</string>
+    <string name="auth_reset_password_subtitle">أدخل رمز التحقق المرسل إلى</string>
+    <string name="auth_reset_password_new_password">كلمة المرور الجديدة</string>
+    <string name="auth_reset_password_submit">تعيين كلمة المرور</string>
+    <string name="auth_reset_password_success">تم تغيير كلمة المرور بنجاح</string>
+    <string name="auth_reset_password_otp_required">رمز التحقق مطلوب</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_page1_title">تابع دورك مباشرة</string>
+    <string name="onboarding_page1_subtitle">مفيش انتظار تاني في أماكن مزدحمة. تقدر تعرف بالظبط كام مريض قبلك وانت في البيت.</string>
+
+    <string name="onboarding_page2_title">اوصل في الوقت المناسب</string>
+    <string name="onboarding_page2_subtitle">استقبل إشعارات ذكية بتقولك إمتى تتحرك للعيادة بناءً على الدور الحالي.</string>
+
+    <string name="onboarding_page3_title">اكتشف أفضل العيادات</string>
+    <string name="onboarding_page3_subtitle">اعثر على أطباء متخصصين قريبين منك مع تقييمات موثوقة من المرضى وتوفر مواعيد بشكل مباشر.</string>
+
+    <string name="onboarding_page4_title">تابع دورك مباشرة</string>
+    <string name="onboarding_page4_subtitle">مفيش انتظار تاني في أماكن مزدحمة. تقدر تعرف بالظبط كام مريض قبلك وانت في البيت.</string>
+
+    <string name="onboarding_skip">تخطي</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_start">ابدأ الآن</string>
+
+    <!-- Medication -->
+    <string name="medication_title">الأدوية</string>
+    <string name="medication_count">%d دواء</string>
+    <string name="medication_filter_all">الكل</string>
+    <string name="medication_filter_daily">يومي</string>
+    <string name="medication_filter_weekly">أسبوعي</string>
+    <string name="medication_filter_as_needed">عند الحاجة</string>
+    <string name="medication_stat_daily">يومي</string>
+    <string name="medication_stat_weekly">أسبوعي</string>
+    <string name="medication_stat_as_needed">عند الحاجة</string>
+    <string name="medication_times_once">مرة واحدة</string>
+    <string name="medication_times_multiple">%d مرات</string>
+    <string name="medication_group_daily">يومي</string>
+    <string name="medication_group_weekly">أسبوعي</string>
+    <string name="medication_group_as_needed">عند الحاجة</string>
+    <string name="medication_delete_title">حذف الدواء</string>
+    <string name="medication_delete_confirm">هل أنت متأكد من حذف %s؟</string>
+    <string name="medication_delete">حذف</string>
+    <string name="medication_cancel">إلغاء</string>
+
+    <!-- Home -->
+    <string name="home_header_title">احجز في عيادتك بسهولة</string>
+    <string name="home_header_subtitle">تابع دورك دون انتظار</string>
+    <string name="home_no_notifications">لا توجد إشعارات جديدة</string>
+
+    <string name="home_sections_nearby">العيادات القريبة</string>
+    <string name="home_sections_all_clinics">جميع العيادات</string>
+    <string name="home_sections_featured">العيادات المميزة</string>
+    <string name="home_sections_no_more">لا توجد المزيد</string>
+    <string name="home_sections_empty_title">لا توجد عيادات</string>
+    <string name="home_sections_empty_subtitle">لا توجد عيادات متاحة حالياً، حاول لاحقاً</string>
+
+    <!-- Last Booking -->
+    <string name="home_last_booking_badge">آخر حجز</string>
+    <string name="home_last_booking_queue_position">دورك</string>
+    <string name="home_last_booking_your_turn">دورك الآن</string>
+    <string name="home_last_booking_people_ahead">%d قدامك</string>
+    <string name="home_last_booking_no_bookings_title">لا توجد حجوزات</string>
+    <string name="home_last_booking_no_bookings_subtitle">ليس لديك أي حجوزات مؤكدة حالياً</string>
+
+    <!-- Last Booking Tips -->
+    <string name="home_last_booking_tip_pending_title">في انتظار الموافقة</string>
+    <string name="home_last_booking_tip_pending_body">حجزك قيد المراجعة من قِبل العيادة. سيتم إخطارك فور التأكيد.</string>
+    <string name="home_last_booking_tip_confirmed_title">موعدك مؤكد ✓</string>
+    <string name="home_last_booking_tip_confirmed_body">أنت في قائمة الانتظار. تبقّى %d شخص قبلك.</string>
+    <string name="home_last_booking_tip_almost_title">دورك اقترب!</string>
+    <string name="home_last_booking_tip_almost_body">تبقّى %d أشخاص فقط قبلك. استعد للدخول.</string>
+    <string name="home_last_booking_tip_your_turn_title">دورك الآن!</string>
+    <string name="home_last_booking_tip_your_turn_body">توجه إلى العيادة الآن. لا تتأخر حتى لا يُلغى حجزك.</string>
+    <string name="home_last_booking_tip_cancelled_title">تم إلغاء الحجز</string>
+    <string name="home_last_booking_tip_cancelled_body">هذا الحجز ملغي. يمكنك حجز موعد جديد في أي وقت.</string>
+    <string name="home_last_booking_tip_in_doctor_title">أنت مع الطبيب الآن</string>
+    <string name="home_last_booking_tip_in_doctor_body">جارٍ فحصك. نتمنى لك سلامة وشفاءً عاجلاً.</string>
+    <string name="home_last_booking_tip_completed_title">زيارة مكتملة</string>
+    <string name="home_last_booking_tip_completed_body">شكراً لزيارتك. لا تنسَ تقييم تجربتك مع العيادة!</string>
+    <string name="home_last_booking_tip_dismiss">اضغط في أي مكان للإغلاق</string>
+
+    <!-- Favorites -->
+    <string name="favorites_title">المفضلة</string>
+    <string name="favorites_empty_title">لا توجد عيادات مفضلة</string>
+    <string name="favorites_empty_subtitle">أضف عياداتك المفضلة لسهولة الوصول إليها</string>
+    <string name="favorites_find_clinic">ابحث عن عيادة</string>
+    <string name="favorites_retry">إعادة المحاولة</string>
+    <string name="favorites_remove">إزالة من المفضلة</string>
+
+    <!-- Bookings -->
+    <string name="bookings_title">حجوزاتي</string>
+    <string name="bookings_auth_required_title">تسجيل الدخول مطلوب</string>
+    <string name="bookings_auth_required_subtitle">سجّل دخولك لعرض حجوزاتك والتحكم فيها</string>
+    <string name="bookings_empty_title">لا توجد حجوزات</string>
+    <string name="bookings_empty_subtitle">لم تقم بحجز أي موعد حتى الآن</string>
+    <string name="bookings_find_clinic">ابحث عن عيادة</string>
+    <string name="bookings_retry">إعادة المحاولة</string>
+    <string name="bookings_doctor">الطبيب</string>
+    <string name="bookings_date">التاريخ</string>
+    <string name="bookings_time">الوقت</string>
+    <string name="bookings_turn_number">رقم الدور</string>
+    <string name="bookings_reviewed">تم التقييم</string>
+
+    <string name="bookings_wait_turns_label">الانتظار</string>
+    <string name="bookings_wait_turns_your_turn">دورك الآن</string>
+    <string name="bookings_wait_turns_count">%d شخص قبلك</string>
+
+    <!-- Booking Detail -->
+    <string name="booking_detail_title">تفاصيل الحجز</string>
+    <string name="booking_detail_appointment_info">معلومات الموعد</string>
+    <string name="booking_detail_patient_info">معلومات المريض</string>
+    <string name="booking_detail_patient_name">الاسم</string>
+    <string name="booking_detail_patient_phone">رقم الهاتف</string>
+    <string name="booking_detail_specialty">التخصص</string>
+    <string name="booking_detail_notes">الملاحظات</string>
+    <string name="booking_detail_cancel_booking">إلغاء الحجز</string>
+    <string name="booking_detail_cancel_confirm_title">إلغاء الحجز</string>
+    <string name="booking_detail_cancel_confirm_body">هل أنت متأكد أنك تريد إلغاء هذا الموعد؟</string>
+    <string name="booking_detail_cancel_confirm_yes">نعم، إلغاء</string>
+    <string name="booking_detail_cancel_success">تم إلغاء الحجز بنجاح</string>
+
+    <!-- Booking Status -->
+    <string name="booking_status_confirmed">مؤكد</string>
+    <string name="booking_status_cancelled">ملغي</string>
+    <string name="booking_status_pending">في الانتظار</string>
+    <string name="booking_status_in_doctor">مع الطبيب</string>
+    <string name="booking_status_completed">مكتمل</string>
+
+    <!-- Reviews -->
+    <string name="review_form_title">أضف تقييمك</string>
+    <string name="review_form_rating_label">تقييمك</string>
+    <string name="review_form_comment_label">تعليقك</string>
+    <string name="review_form_comment_hint">شارك تجربتك مع هذه العيادة...</string>
+    <string name="review_form_submit">إرسال التقييم</string>
+    <string name="review_form_success">تم إرسال تقييمك بنجاح، شكراً لك!</string>
+
+    <!-- Booking Flow -->
+    <string name="booking_choose_date">اختر التاريخ</string>
+    <string name="booking_choose_time">اختر الوقت</string>
+    <string name="booking_no_slots">لا تتوفر مواعيد لهذا اليوم</string>
+    <string name="booking_continue">متابعة</string>
+    <string name="booking_confirm_title">تأكيد الحجز</string>
+    <string name="booking_confirm_subtitle">يرجى مراجعة تفاصيل موعدك قبل التأكيد</string>
+    <string name="booking_confirm_button">تأكيد الحجز</string>
+    <string name="booking_confirmed_title">تم تأكيد الحجز!</string>
+    <string name="booking_confirmed_body">تم حجز موعدك بنجاح</string>
+    <string name="booking_confirmed_done">تم</string>
+    <string name="booking_payment_note">ستتواصل معك العيادة بخصوص تعليمات الدفع بعد الموافقة</string>
+    <string name="booking_your_info">معلوماتك</string>
+    <string name="booking_full_name">الاسم الكامل</string>
+    <string name="booking_full_name_hint">أدخل اسمك الكامل</string>
+    <string name="booking_phone">رقم الهاتف</string>
+    <string name="booking_phone_hint">أدخل رقم هاتفك</string>
+    <string name="booking_notes_optional">ملاحظات (اختياري)</string>
+    <string name="booking_notes_hint">أي أعراض أو ملاحظات للطبيب...</string>
+    <string name="booking_reviewed">تم التقييم</string>
+    <string name="booking_missing_info">معلومات الحجز غير مكتملة</string>
+
+    <!-- Booking Summary -->
+    <string name="booking_summary_clinic">العيادة</string>
+    <string name="booking_summary_doctor">الطبيب</string>
+    <string name="booking_summary_patient">المريض</string>
+    <string name="booking_summary_phone">الهاتف</string>
+    <string name="booking_summary_date">التاريخ</string>
+    <string name="booking_summary_time">الوقت</string>
+    <string name="booking_summary_notes">الملاحظات</string>
+
+    <!-- Bottom Bar -->
+    <string name="booking_bottom_bar_fee_label">رسوم الاستشارة</string>
+    <string name="booking_bottom_bar_book_now">احجز الآن</string>
+
+    <!-- Stepper -->
+    <string name="booking_stepper_date_time">الموعد</string>
+    <string name="booking_stepper_your_info">بياناتك</string>
+    <string name="booking_stepper_confirm">التأكيد</string>
+
+    <!-- Clinic -->
+    <string name="clinic_choose_date">اختر التاريخ</string>
+    <string name="clinic_status_open">متاح</string>
+    <string name="clinic_status_closed">مغلق</string>
+    <string name="clinic_available_doctors">الأطباء المتاحون (%d)</string>
+    <string name="clinic_no_doctors">لا يوجد أطباء متاحون في هذا التاريخ</string>
+    <string name="clinic_no_slots_today">لا توجد مواعيد متاحة اليوم</string>
+    <string name="clinic_choose_time">اختر الوقت</string>
+    <string name="clinic_remaining">متبقي %d</string>
+    <string name="clinic_selected_summary_clear">إلغاء الاختيار</string>
+    <string name="clinic_book_now">احجز الآن</string>
+    <string name="clinic_currency">ج.م</string>
+    <string name="clinic_years_exp">%d سنة خبرة</string>
+
+    <!-- Clinic Tabs -->
+    <string name="clinic_tab_overview">نظرة عامة</string>
+    <string name="clinic_tab_booking">الحجز</string>
+    <string name="clinic_tab_reviews">التقييمات</string>
+
+    <!-- Clinic Info -->
+    <string name="clinic_info_about">عن العيادة</string>
+    <string name="clinic_info_opening_hours">ساعات العمل</string>
+    <string name="clinic_info_location">الموقع</string>
+    <string name="clinic_info_contact">التواصل</string>
+    <string name="clinic_info_call">اتصال</string>
+    <string name="clinic_info_whatsapp">واتساب</string>
+    <string name="clinic_info_open_maps">فتح الخريطة</string>
+    <string name="clinic_info_show_more">عرض المزيد</string>
+    <string name="clinic_info_show_less">عرض أقل</string>
+
+    <!-- Clinic Services -->
+    <string name="clinic_services_title">الخدمات</string>
+    <string name="clinic_services_available">الخدمات المتاحة</string>
+    <string name="clinic_services_facilities">المرافق</string>
+    <string name="clinic_services_insurance">التأمينات المقبولة</string>
+    <string name="clinic_services_empty_title">لا توجد خدمات</string>
+    <string name="clinic_services_empty_subtitle">لم يتم إضافة معلومات الخدمات بعد</string>
+
+    <!-- Clinic Reviews -->
+    <string name="clinic_reviews_title">التقييمات والآراء</string>
+    <string name="clinic_reviews_patients_reviews">آراء المرضى</string>
+    <string name="clinic_reviews_empty">لا توجد تقييمات بعد</string>
+    <string name="clinic_reviews_with_doctor">مع: %s</string>
+    <string name="clinic_reviews_total">%d تقييم</string>
+
+    <!-- Search -->
+    <string name="search_hint">ابحث عن عيادة أو طبيب...</string>
+    <string name="search_initial_title">ابحث عن عيادة</string>
+    <string name="search_initial_hint">ابدأ الكتابة للبحث عن عيادة أو طبيب</string>
+    <string name="search_empty_title">لا توجد نتائج</string>
+    <string name="search_no_results">لم نجد أي عيادة تطابق بحثك</string>
+
+    <!-- Search Filter -->
+    <string name="search_filter_label">تصفية</string>
+    <string name="search_filter_title">تصفية النتائج</string>
+    <string name="search_filter_clear_all">مسح الكل</string>
+    <string name="search_filter_apply">تطبيق</string>
+    <string name="search_filter_all">الكل</string>
+    <string name="search_filter_availability">الحالة</string>
+    <string name="search_filter_open">مفتوح</string>
+    <string name="search_filter_closed">مغلق</string>
+    <string name="search_filter_min_rating">الحد الأدنى للتقييم</string>
+
+    <!-- Settings -->
+    <string name="settings_guest_title">أهلاً بك كزائر</string>
+    <string name="settings_guest_subtitle">سجّل دخولك للاستفادة من كافة الخدمات</string>
+
+    <string name="settings_section_account">الحساب</string>
+    <string name="settings_section_preferences">التفضيلات</string>
+    <string name="settings_section_support">الدعم والمساعدة</string>
+    <string name="settings_section_legal">القانونية</string>
+
+    <!-- Account -->
+    <string name="settings_account_profile">الملف الشخصي</string>
+    <string name="settings_account_profile_sub">عرض وتعديل معلوماتك</string>
+    <string name="settings_account_change_password">تغيير كلمة المرور</string>
+    <string name="settings_account_change_password_sub">تحديث كلمة المرور</string>
+    <string name="settings_account_bookings">حجوزاتي</string>
+    <string name="settings_account_bookings_sub">إدارة مواعيدك</string>
+
+    <!-- Preferences -->
+    <string name="settings_preferences_notifications">الإشعارات</string>
+    <string name="settings_preferences_notifications_sub">إدارة إشعارات التطبيق</string>
+    <string name="settings_preferences_language">اللغة</string>
+    <string name="settings_preferences_arabic">العربية</string>
+    <string name="settings_preferences_english">English</string>
+    <string name="settings_preferences_choose_language">اختر اللغة</string>
+    <string name="settings_preferences_dark_mode">الوضع الداكن</string>
+    <string name="settings_preferences_dark_on">مفعّل</string>
+    <string name="settings_preferences_dark_off">غير مفعّل</string>
+
+    <!-- Support -->
+    <string name="settings_support_help">مركز المساعدة</string>
+    <string name="settings_support_help_sub">الأسئلة الشائعة والدعم</string>
+    <string name="settings_support_contact">تواصل معنا</string>
+    <string name="settings_support_contact_sub">اتصل بفريق الدعم</string>
+    <string name="settings_support_rate">قيّم التطبيق</string>
+    <string name="settings_support_rate_sub">شاركنا رأيك</string>
+
+    <!-- Legal -->
+    <string name="settings_legal_terms">الشروط والأحكام</string>
+    <string name="settings_legal_terms_sub">شروط استخدام التطبيق</string>
+    <string name="settings_legal_privacy">سياسة الخصوصية</string>
+    <string name="settings_legal_privacy_sub">كيف نحمي بياناتك</string>
+    <string name="settings_legal_about">حول التطبيق</string>
+    <string name="settings_legal_version">الإصدار 1.0.0</string>
+    <string name="settings_legal_delete_account">حذف الحساب</string>
+    <string name="settings_legal_delete_account_sub">تطبق الشروط والأحكام</string>
+    <string name="settings_legal_delete_confirm">هل أنت متأكد من حذف حسابك؟ لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="settings_legal_delete_yes">نعم، احذف</string>
+
+    <string name="settings_logout">تسجيل الخروج</string>
+    <string name="settings_logout_confirm">هل أنت متأكد من تسجيل الخروج؟</string>
+
+    <!-- Validation -->
+    <string name="validation_email_required">البريد الإلكتروني مطلوب</string>
+    <string name="validation_email_invalid">صيغة البريد الإلكتروني غير صحيحة</string>
+    <string name="validation_password_required">كلمة المرور مطلوبة</string>
+    <string name="validation_password_min_length">كلمة المرور يجب أن تكون 6 أحرف على الأقل</string>
+    <string name="validation_password_mismatch">كلمات المرور غير متطابقة</string>
+    <string name="validation_name_required">الاسم مطلوب</string>
+    <string name="validation_name_too_short">الاسم يجب أن يكون حرفين على الأقل</string>
+    <string name="validation_phone_required">رقم الهاتف مطلوب</string>
+
+    <!-- Errors -->
+    <string name="error_network_title">لا يوجد اتصال بالإنترنت</string>
+    <string name="error_network_subtitle">تحقق من اتصالك بالإنترنت وحاول مرة أخرى</string>
+    <string name="error_network_action">إعادة المحاولة</string>
+    <string name="error_network_timeout">انتهت مهلة الاتصال</string>
+    <string name="error_network_cancelled">تم إلغاء الطلب</string>
+    <string name="error_network_connection">خطأ في الاتصال بالإنترنت</string>
+    <string name="error_network_certificate">خطأ في شهادة الأمان</string>
+    <string name="error_network_server_connection">فشل الاتصال بالخادم</string>
+    <string name="error_network_no_response">لا يوجد رد من الخادم</string>
+
+    <string name="error_server_title">حدث خطأ في الخادم</string>
+    <string name="error_server_subtitle">نعتذر عن هذا الخطأ. يرجى المحاولة لاحقاً</string>
+    <string name="error_server_action">حاول مرة أخرى</string>
+    <string name="error_server_bad_request">طلب غير صحيح</string>
+    <string name="error_server_unauthorized">غير مصرح لك بالدخول</string>
+    <string name="error_server_forbidden">غير مصرح لك بهذا الإجراء</string>
+    <string name="error_server_not_found">البيانات المطلوبة غير موجودة</string>
+    <string name="error_server_invalid_data">بيانات غير صالحة</string>
+    <string name="error_server_internal">خطأ في الخادم، حاول لاحقاً</string>
+    <string name="error_server_unexpected">حدث خطأ غير متوقع</string>
+    <string name="error_server_invalid_credentials">البريد الإلكتروني أو كلمة المرور غير صحيحة</string>
+    <string name="error_server_email_taken">البريد الإلكتروني مستخدم بالفعل</string>
+    <string name="error_server_phone_taken">رقم الهاتف مستخدم بالفعل</string>
+    <string name="error_server_too_many_requests">محاولات كثيرة، انتظر قليلاً وحاول مجدداً</string>
+
+    <string name="error_auth_title">خطأ في المصادقة</string>
+    <string name="error_auth_invalid_credentials">البريد الإلكتروني أو كلمة المرور غير صحيحة</string>
+    <string name="error_auth_session_expired">انتهت الجلسة، يرجى تسجيل الدخول مرة أخرى</string>
+
+    <string name="error_cache_title">خطأ في البيانات المحلية</string>
+    <string name="error_cache_subtitle">حدث خطأ أثناء الوصول للبيانات المحفوظة</string>
+    <string name="error_cache_action">إعادة المحاولة</string>
+
+    <string name="error_validation_title">خطأ في التحقق</string>
+    <string name="error_validation_subtitle">يرجى مراجعة البيانات المدخلة والمحاولة مرة أخرى</string>
+    <string name="error_validation_action">حسناً</string>
+
+    <string name="error_unknown_title">حدث خطأ غير متوقع</string>
+    <string name="error_unknown_subtitle">نعتذر عن هذا الخطأ. حاول مرة أخرى</string>
+    <string name="error_unknown_action">حاول مرة أخرى</string>
+
+    <!-- Specific Module Errors -->
+    <string name="error_clinics_featured">فشل تحميل العيادات المميزة</string>
+    <string name="error_clinics_nearby">فشل تحميل العيادات القريبة</string>
+    <string name="error_clinics_all">فشل تحميل قائمة العيادات</string>
+    <string name="error_clinics_details">فشل في تحميل تفاصيل العيادة</string>
+    <string name="error_clinics_doctors">فشل في تحميل قائمة الأطباء</string>
+    <string name="error_clinics_booking">فشل في حجز الموعد</string>
+    <string name="error_clinics_booking_failed">فشل في حجز الموعد. يرجى المحاولة مرة أخرى</string>
+    <string name="error_clinics_toggle_favorite">فشل تحديث المفضلة</string>
+
+    <string name="error_booking_list">فشل في تحميل الحجوزات</string>
+    <string name="error_booking_create">فشل في إنشاء الموعد</string>
+    <string name="error_doctor_slots">فشل في تحميل مواعيد الطبيب</string>
+
+    <!-- Common -->
+    <string name="common_retry">إعادة المحاولة</string>
+    <string name="common_try_again">حاول مرة أخرى</string>
+    <string name="common_cancel">إلغاء</string>
+    <string name="common_ok">حسناً</string>
+    <string name="common_no">لا</string>
+    <string name="common_login">تسجيل الدخول</string>
+
+    <!-- Profile -->
+    <string name="profile_app_bar_title">أكمل ملفك الشخصي</string>
+    <string name="profile_completion_title">اكتمال الملف الشخصي</string>
+    <string name="profile_completion_done">مكتمل</string>
+    <string name="profile_completion_of_5">%d من 5 حقول مكتملة</string>
+    <string name="profile_completion_hint0">أدخل اسمك للبدء</string>
+    <string name="profile_completion_hint1">بداية رائعة! استمر 💪</string>
+    <string name="profile_completion_hint2">أنت في منتصف الطريق تقريباً!</string>
+    <string name="profile_completion_hint3">اقتربت، حقلان متبقيان!</string>
+    <string name="profile_completion_hint4">حقل واحد فقط لإكمال ملفك الشخصي!</string>
+
+    <string name="profile_section_personal">المعلومات الشخصية</string>
+    <string name="profile_section_medical">المعلومات الطبية</string>
+    <string name="profile_section_emergency">جهة الاتصال في حالات الطوارئ</string>
+
+    <string name="profile_field_full_name">الاسم الكامل</string>
+    <string name="profile_field_date_of_birth">تاريخ الميلاد</string>
+    <string name="profile_field_gender">الجنس</string>
+    <string name="profile_field_blood_type">فصيلة الدم (اختياري)</string>
+    <string name="profile_field_chronic_diseases">الأمراض المزمنة (اختياري)</string>
+    <string name="profile_field_chronic_hint">مثل: السكري، ضغط الدم…</string>
+    <string name="profile_field_emergency_contact">رقم جهة الاتصال في حالات الطوارئ</string>
+
+    <string name="profile_gender_male">ذكر</string>
+    <string name="profile_gender_female">أنثى</string>
+
+    <string name="profile_save">حفظ الملف الشخصي</string>
+    <string name="profile_retry">حاول مرة أخرى</string>
+
+    <string name="profile_validation_name_required">الاسم مطلوب</string>
+    <string name="profile_validation_birth_date_required">يرجى تحديد تاريخ ميلادك</string>
+    <string name="profile_validation_gender_required">يرجى تحديد جنسك</string>
+    <string name="profile_validation_emergency_required">جهة الاتصال في حالات الطوارئ مطلوبة</string>
+
+    <string name="profile_save_success">تم حفظ الملف الشخصي بنجاح! 🎉</string>
+    <string name="profile_no_changes">لم يتم إجراء أي تغييرات</string>
+
+    <!-- Location -->
+    <string name="location_access_needed">مطلوب إذن الموقع</string>
+    <string name="location_enable_manually">فعّله يدوياً من الإعدادات</string>
+    <string name="location_why_we_use">نستخدم موقعك فقط لعرض العيادات القريبة منك.</string>
+    <string name="location_open_settings">فتح الإعدادات</string>
+    <string name="location_enter_manually">إدخال الموقع يدوياً</string>
+    <string name="location_disabled_title">خدمة الموقع معطّلة</string>
+    <string name="location_enable_prompt">اضغط هنا لتفعيلها الآن</string>
+
+    <string name="location_steps_title_android">خطوات أندرويد</string>
+    <string name="location_steps_title_ios">خطوات iOS</string>
+
+    <!-- Android Location Steps -->
+    <string name="location_android_step1">اضغط على \"فتح الإعدادات\" أدناه</string>
+    <string name="location_android_step2">اضغط على الأذونات</string>
+    <string name="location_android_step3">اضغط على الموقع</string>
+    <string name="location_android_step4">اختر \"السماح أثناء استخدام التطبيق فقط\"</string>
+    <string name="location_android_step5">ارجع — سنكتشف التغيير تلقائياً</string>
+
+    <!-- iOS Location Steps -->
+    <string name="location_ios_step1">اضغط على \"فتح الإعدادات\" أدناه</string>
+    <string name="location_ios_step2">اضغط على الموقع</string>
+    <string name="location_ios_step3">اختر \"أثناء استخدام التطبيق\"</string>
+    <string name="location_ios_step4">ارجع — سنكتشف التغيير تلقائياً</string>
+
+</resources>
