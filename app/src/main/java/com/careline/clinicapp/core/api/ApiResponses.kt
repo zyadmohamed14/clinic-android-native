@@ -9,6 +9,13 @@ import kotlinx.serialization.Serializable
  * Generic paginated list response.
  * Flutter equivalent: ClinicsResponse model (clinics_response.dart)
  */
+
+@Serializable
+data class ApiResponse<T>(
+    @SerialName("status") val status: Boolean = false,
+    @SerialName("message") val message: String = "",
+    @SerialName("data") val data: T? = null
+)
 @Serializable
 data class ClinicsResponse(
     @SerialName("data") val data: List<ClinicSummaryDto> = emptyList(),

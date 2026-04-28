@@ -1,52 +1,54 @@
+// core/common/Resource.kt
 package com.careline.clinicapp.core.common
 
-
-
 /**
- * A sealed class that wraps the result of any operation
- * (network call, DB query, etc.)
+ * Wraps the result of any operation (network, DB, cache).
  *
-
+ * Why AppFailure instead of String in Error?
+ * - The ViewModel can check failure TYPE, not message content.
+ * - Example: is AppFailure.UnauthorizedFailure → navigate to login.
+ * - The UI decides how to display it — Resource never formats strings.
  *
- * Usage in a ViewModel:
- *   _uiState.value = Resource.Loading
- *   when (val result = repository.getClinics()) {
- *       is Resource.Success -> _uiState.value = Resource.Success(result.data)
- *       is Resource.Error   -> _uiState.value = Resource.Error(result.message)
- *   }
+ * Flutter equivalent:
+ *   Loading  → AuthLoading state in auth_state.dart
+ *   Success  → AuthAuthenticated / LoginSuccess
+ *   Error    → AuthFailure(message) — but we do it better with types
  */
 sealed class Resource<out T> {
 
-    /** The operation is in progress. Shown as a loading spinner in the UI. */
+    /** Operation in progress — show a spinner */
     data object Loading : Resource<Nothing>()
 
-    /** The operation completed successfully. [data] holds the result. */
+    /** Operation succeeded — [data] holds the result */
     data class Success<T>(val data: T) : Resource<T>()
 
     /**
-     * The operation failed.
-     * [message] is a human-readable error for display.
-     * [code] is an optional HTTP status code for programmatic handling.
+     * Operation failed.
+     * [failure] is a typed AppFailure — never a raw String.
+     *
+     * In your ViewModel:
+     *   is AppFailure.UnauthorizedFailure → navigate to login
+     *   is AppFailure.NetworkFailure      → show "no internet" UI
+     *   is AppFailure.ServerFailure       → show failure.message
      */
-    data class Error(
-        val message: String,
-        val code: Int? = null,
-    ) : Resource<Nothing>()
+    data class Error(val failure: AppFailure) : Resource<Nothing>()
 }
 
-/** Convenience: run a block only when this Resource is Success */
+// ─── Extension functions — your idea, kept as-is ─────────────────────────────
+
+/** Run [action] only when Success. Chainable. */
 inline fun <T> Resource<T>.onSuccess(action: (T) -> Unit): Resource<T> {
     if (this is Resource.Success) action(data)
     return this
 }
 
-/** Convenience: run a block only when this Resource is Error */
-inline fun <T> Resource<T>.onError(action: (String, Int?) -> Unit): Resource<T> {
-    if (this is Resource.Error) action(message, code)
+/** Run [action] only when Error. Chainable. */
+inline fun <T> Resource<T>.onError(action: (AppFailure) -> Unit): Resource<T> {
+    if (this is Resource.Error) action(failure)
     return this
 }
 
-/** Convenience: run a block only when this Resource is Loading */
+/** Run [action] only when Loading. Chainable. */
 inline fun <T> Resource<T>.onLoading(action: () -> Unit): Resource<T> {
     if (this is Resource.Loading) action()
     return this

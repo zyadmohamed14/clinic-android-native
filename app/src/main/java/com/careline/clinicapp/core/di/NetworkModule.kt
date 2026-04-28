@@ -1,11 +1,15 @@
-package com.careline.clinicapp.core.api
-
+// core/di/NetworkModule.kt
+package com.careline.clinicapp.core.di
 
 import com.careline.clinicapp.BuildConfig
+import com.careline.clinicapp.core.api.BaseApiServices
+import com.careline.clinicapp.core.api.BaseApiServicesImpl
+import com.careline.clinicapp.core.api.RetrofitApiService
 import com.careline.clinicapp.core.api.interceptor.AuthInterceptor
 import com.careline.clinicapp.core.api.interceptor.UnauthorizedInterceptor
 import com.careline.clinicapp.core.constants.AppConstants
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,37 +22,19 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-/**
- * Provides the entire networking stack via Hilt.
- *
- * Flutter equivalent: DioClient.getDio() + _setupInterceptors() +
- * the ApiService constructor in api_service.dart
- *
- * Build order (each depends on the one above):
- *   Json → AuthInterceptor → UnauthorizedInterceptor
- *       → OkHttpClient → Retrofit → ApiService
- */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    /**
-     * Kotlinx Serialization JSON instance.
-     * ignoreUnknownKeys = true → won't crash if API adds new fields
-     * isLenient = true → handles minor malformations
-     */
     @Provides
     @Singleton
     fun provideJson(): Json = Json {
         ignoreUnknownKeys = true
         isLenient = true
         coerceInputValues = true
+        explicitNulls = false   // don't serialize null fields
     }
 
-    /**
-     * OkHttp logging — only active in debug builds.
-     * Flutter equivalent: PrettyDioLogger interceptor
-     */
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
@@ -60,15 +46,6 @@ object NetworkModule {
             }
         }
 
-    /**
-     * OkHttpClient — the actual HTTP engine.
-     * Flutter equivalent: the Dio instance with BaseOptions.
-     *
-     * Interceptor order matters:
-     *   1. Logging (outermost — sees the final request)
-     *   2. Auth (adds the token)
-     *   3. Unauthorized (watches the response)
-     */
     @Provides
     @Singleton
     fun provideOkHttpClient(
@@ -76,19 +53,17 @@ object NetworkModule {
         authInterceptor: AuthInterceptor,
         unauthorizedInterceptor: UnauthorizedInterceptor,
     ): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .addInterceptor(authInterceptor)
-        .addInterceptor(unauthorizedInterceptor)
+        .addInterceptor(authInterceptor)           // 1st: attaches token
+        .addInterceptor(unauthorizedInterceptor)   // 2nd: watches 401 responses
+        .addInterceptor(loggingInterceptor)        // last: logs final request+response
         .connectTimeout(AppConstants.CONNECT_TIMEOUT_SECONDS, TimeUnit.SECONDS)
         .readTimeout(AppConstants.READ_TIMEOUT_SECONDS, TimeUnit.SECONDS)
         .writeTimeout(AppConstants.WRITE_TIMEOUT_SECONDS, TimeUnit.SECONDS)
         .build()
 
     /**
-     * Retrofit — turns the ApiService interface into real HTTP calls.
-     * BASE_URL comes from BuildConfig — set per flavor in build.gradle.kts.
-     *
-     * Flutter equivalent: Dio + BaseOptions(baseUrl: Endpoints.baseUrl)
+     * Retrofit instance — only used to create RetrofitApiService.
+     * This is INTERNAL to the di package.
      */
     @Provides
     @Singleton
@@ -99,16 +74,33 @@ object NetworkModule {
         .baseUrl(BuildConfig.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(
-            json.asConverterFactory("application/json".toMediaType()),
+            json.asConverterFactory("application/json; charset=UTF-8".toMediaType())
         )
         .build()
 
     /**
-     * ApiService — the interface Retrofit implements automatically.
-     * Flutter equivalent: the ApiService class with get/post/put/delete methods.
+     * The internal Retrofit interface — only BaseApiServicesImpl uses this.
+     * Nothing else in the app knows RetrofitApiService exists.
      */
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService =
-        retrofit.create(ApiService::class.java)
+    fun provideRetrofitApiService(retrofit: Retrofit): RetrofitApiService =
+        retrofit.create(RetrofitApiService::class.java)
+
+    /**
+     * THE ONLY BINDING THE REST OF THE APP SEES.
+     *
+     * Features inject BaseApiServices — not Retrofit, not RetrofitApiService.
+     * To switch to Ktor: change this line to provide KtorApiServicesImpl instead.
+     *
+     * Previous bug: you were providing BaseApiServices TWICE in your module.
+     * Hilt would throw a DuplicateBindings error at compile time.
+     * Fixed by removing the duplicate and keeping only this one.
+     */
+    @Provides
+    @Singleton
+    fun provideBaseApiServices(
+        retrofitApiService: RetrofitApiService,
+        json: Json
+    ): BaseApiServices = BaseApiServicesImpl(retrofitApiService, json)
 }
