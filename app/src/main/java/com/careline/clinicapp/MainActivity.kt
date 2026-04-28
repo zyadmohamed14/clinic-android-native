@@ -16,8 +16,9 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
 import com.careline.clinicapp.core.theme.CarLineTheme
 import com.careline.clinicapp.core.ui.components.DevToolsOverlay
+import com.careline.clinicapp.feature.auth.presentation.screen.AuthScreen
 import com.careline.clinicapp.feature.auth.presentation.viewmodel.LoginViewModel
-import com.careline.clinicapp.feature.auth.presentation.screen.LoginScreen
+import com.careline.clinicapp.feature.auth.presentation.screen.LoginTab
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 import javax.inject.Inject
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
             var isArabic by remember { mutableStateOf(true) }
             val viewModel: LoginViewModel = hiltViewModel()
             CarLineTheme(darkTheme = isDark) {
-
+                AuthScreen()
                 ProvideLocale(isArabic = isArabic) {
 
                     DevToolsOverlay(
@@ -53,7 +54,8 @@ class MainActivity : ComponentActivity() {
                     ) {
                       //  NavGraph(authEventBus)
 
-                        LoginScreen(viewModel)
+                      //  LoginTab(viewModel)
+
                     }
                 }
             }

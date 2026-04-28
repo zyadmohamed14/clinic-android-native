@@ -29,6 +29,7 @@ import com.careline.clinicapp.core.ants.AppStrings
 
 import com.careline.clinicapp.core.ui.components.AppButton
 import com.careline.clinicapp.core.ui.components.AppButtonType
+import com.careline.clinicapp.core.ui.components.AppHeightSpace
 import com.careline.clinicapp.core.ui.components.EmailTextField
 import com.careline.clinicapp.core.ui.components.PasswordTextField
 import com.careline.clinicapp.feature.auth.presentation.viewmodel.LoginUiEvent
@@ -36,7 +37,7 @@ import com.careline.clinicapp.feature.auth.presentation.viewmodel.LoginViewModel
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun LoginScreen(viewModel: LoginViewModel) {
+fun LoginTab(viewModel: LoginViewModel) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
     val context = LocalContext.current
@@ -71,6 +72,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                 style = MaterialTheme.typography.displayLarge,
                 // color = MaterialTheme.colorScheme.primary
             )
+            AppHeightSpace()
             EmailTextField(
                 value = uiState.email,
                 onValueChange = viewModel::onEmailChanged,
@@ -80,7 +82,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 )
             )
-
+            AppHeightSpace()
             PasswordTextField(
                 value = uiState.password,
                 onValueChange = viewModel::onPasswordChanged,
@@ -90,14 +92,15 @@ fun LoginScreen(viewModel: LoginViewModel) {
                     onDone = { viewModel.onLoginClicked() }
                 )
             )
+            AppHeightSpace(value = 16.dp)
             AppButton(
                 textId = AppStrings.AUTH_LOGIN,
                 onClick = { viewModel.onLoginClicked() },
                 isLoading = uiState.isLoading,
                 enabled = true,
             )
-
-// Outlined
+            AppHeightSpace()
+            // Outlined
             AppButton(
                 textId =AppStrings.AUTH_CONTINUE_AS_GUEST,
                 onClick = { },
