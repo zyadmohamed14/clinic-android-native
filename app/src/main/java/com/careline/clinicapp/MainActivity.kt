@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,25 +38,26 @@ class MainActivity : ComponentActivity() {
             var isArabic by remember { mutableStateOf(true) }
             val viewModel: LoginViewModel = hiltViewModel()
             CarLineTheme(darkTheme = isDark) {
-                AuthScreen()
-                ProvideLocale(isArabic = isArabic) {
+                @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+                Scaffold {  innerPadding ->
+                    AuthScreen(
 
-                    DevToolsOverlay(
-                        isDark = isDark,
-                        isArabic = isArabic,
+                    )
+                    ProvideLocale(isArabic = isArabic) {
 
-                        onToggleTheme = {
-                            isDark = !isDark
-                        },
+                        DevToolsOverlay(
+                            isDark = isDark,
+                            isArabic = isArabic,
+                            onToggleTheme = {
+                                isDark = !isDark
+                            },
+                            onToggleLanguage = {
+                                isArabic = !isArabic
+                            }
+                        ) {
 
-                        onToggleLanguage = {
-                            isArabic = !isArabic
+
                         }
-                    ) {
-                      //  NavGraph(authEventBus)
-
-                      //  LoginTab(viewModel)
-
                     }
                 }
             }
