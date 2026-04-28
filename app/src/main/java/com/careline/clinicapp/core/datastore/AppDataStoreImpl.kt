@@ -12,11 +12,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 import javax.inject.Singleton
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = AppConstants.DATASTORE_NAME)
 @Singleton
-class AppDataStoreImpl (
+class AppDataStoreImpl  @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : AppDataStore{
     private companion object {

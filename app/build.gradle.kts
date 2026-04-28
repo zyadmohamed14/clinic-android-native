@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
  //  alias(libs.plugins.kotlin.android)
@@ -6,16 +9,22 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
 }
+val keyProperties = Properties()
+val keyFile = rootProject.file("key.properties")
 
+if (keyFile.exists()) {
+    keyProperties.load(FileInputStream(keyFile))
+} else {
+
+    throw GradleException("key.properties file not found")
+}
 android {
     namespace = "com.careline.clinicapp"
     compileSdk {
         version = release(36)
       //  compileSdk = 36
     }
-    androidResources{
-        generateLocaleConfig = true
-    }
+
     defaultConfig {
         applicationId = "com.careline.clinicapp"
         minSdk = 24
@@ -31,27 +40,61 @@ android {
     // Each flavor produces a separate APK/AAB with its own config.
     flavorDimensions += "environment"
     productFlavors {
-        create("dev"){
+        create("dev") {
             dimension = "environment"
-            applicationIdSuffix = ".dev"          // com.careline.clinicapp.dev
+            applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
-            buildConfigField("String", "BASE_URL", "\"https://dev.your-api.com/api/v1/\"")
-            buildConfigField("String", "ENVIRONMENT", "\"dev\"")
+
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"${keyProperties["DEV_BASE_URL"]}\""
+            )
+
+            buildConfigField(
+                "String",
+                "ENVIRONMENT",
+                "\"${keyProperties["DEV_ENV"]}\""
+            )
+
             resValue("string", "app_name", "CareLine Dev")
         }
+
         create("staging") {
             dimension = "environment"
             applicationIdSuffix = ".staging"
             versionNameSuffix = "-staging"
-            buildConfigField("String", "BASE_URL", "\"https://staging.your-api.com/api/v1/\"")
-            buildConfigField("String", "ENVIRONMENT", "\"staging\"")
+
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"${keyProperties["STAGING_BASE_URL"]}\""
+            )
+
+            buildConfigField(
+                "String",
+                "ENVIRONMENT",
+                "\"${keyProperties["STAGING_ENV"]}\""
+            )
+
             resValue("string", "app_name", "CareLine Staging")
         }
+
         create("production") {
             dimension = "environment"
-            // No suffix for production — clean package name
-            buildConfigField("String", "BASE_URL", "\"https://api.your-api.com/api/v1/\"")
-            buildConfigField("String", "ENVIRONMENT", "\"production\"")
+
+            buildConfigField(
+                "String",
+                "BASE_URL",
+                "\"${keyProperties["PROD_BASE_URL"]}\""
+            )
+
+            buildConfigField(
+                "String",
+                "ENVIRONMENT",
+                "\"${keyProperties["PROD_ENV"]}\""
+            )
+
             resValue("string", "app_name", "CareLine")
         }
     }

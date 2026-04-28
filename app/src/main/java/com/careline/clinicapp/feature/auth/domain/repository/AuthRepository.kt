@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
 
-    suspend fun login (loginRequest: LoginRequest) : Flow<Resource<User>>
+    suspend fun login (loginRequest: LoginRequest) :User
     suspend fun googleLogin(): Flow<Resource<User>>
     suspend fun signup (registerRequest: RegisterRequest) : Flow<Resource<User>>
 

@@ -8,7 +8,7 @@ import retrofit2.http.*
     @GET
     suspend fun get(
         @Url url: String,
-        @Body body: JsonElement,
+     //   @Body body: JsonElement,
         @QueryMap(encoded = false) query: Map<String, @JvmSuppressWildcards Any> = emptyMap(),
         @HeaderMap headers: Map<String, @JvmSuppressWildcards String> = emptyMap()
     ): JsonElement

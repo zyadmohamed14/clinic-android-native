@@ -30,4 +30,15 @@ data class User(
             emailVerifiedAt = emailVerifiedAt ?: this.emailVerifiedAt
         )
     }
+    fun toJson(): String = buildString {
+        append("{")
+        append(""""id":$id,""")
+        append(""""name":"$name",""")
+        append(""""email":"$email",""")
+        phone?.let { append(""""phone":"$it",""") }
+        avatar?.let { append(""""avatar":"$it",""") }
+        append(""""token":"$token"""")
+        append("}")
+    }
+
 }

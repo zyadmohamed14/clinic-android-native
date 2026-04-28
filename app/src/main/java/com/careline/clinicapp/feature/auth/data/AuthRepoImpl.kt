@@ -1,5 +1,7 @@
 package com.careline.clinicapp.feature.auth.data
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.careline.clinicapp.core.common.Resource
 import com.careline.clinicapp.feature.auth.data.mapper.toDomain
 import com.careline.clinicapp.feature.auth.data.model.LoginRequest
@@ -13,15 +15,13 @@ import kotlinx.coroutines.flow.flow
 class AuthRepoImpl @Inject constructor(
     private val remoteDataSource: AuthRemoteDataSource
 ) : AuthRepository {
-    override suspend fun login(loginRequest: LoginRequest): Flow<Resource<User>> {
-//        val response = remoteDataSource.login(loginRequest.email, loginRequest.password)
-//
-//        return response.data?.let { loginDataDto ->
-//            val user = loginDataDto.user.toDomain(loginDataDto.token)
-//
-//
-//        }
-        TODO("Not yet implemented")
+    @RequiresApi(Build.VERSION_CODES.O)
+    override suspend fun login(loginRequest: LoginRequest): User {
+        val dto = remoteDataSource.login(
+            email = loginRequest.email,
+            password = loginRequest.password,
+        )
+        return dto.user.toDomain(token = dto.token)
     }
 
     override suspend fun googleLogin(): Flow<Resource<User>> {
