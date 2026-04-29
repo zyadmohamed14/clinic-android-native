@@ -8,7 +8,7 @@ sealed class Screen(val route: String) {
     data object Onboarding : Screen("onboarding")
 
     // ── Auth ──────────────────────────────────────────────────────────────────
-    data object Login : Screen("login")
+    data object Auth : Screen("login")
     data object Register : Screen("register")
 
     // ── Main (post-login) ─────────────────────────────────────────────────────

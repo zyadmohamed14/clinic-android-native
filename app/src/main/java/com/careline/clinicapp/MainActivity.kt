@@ -1,19 +1,17 @@
-package com.careline.clinicapp.app
+package com.careline.clinicapp
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
@@ -23,12 +21,9 @@ import com.careline.clinicapp.core.navigation.AppNavGraph
 import com.careline.clinicapp.core.navigation.StartDestinationResolver
 import com.careline.clinicapp.core.theme.CarLineTheme
 import com.careline.clinicapp.core.ui.components.DevToolsOverlay
-import com.careline.clinicapp.feature.auth.presentation.screen.AuthScreen
-import com.careline.clinicapp.feature.auth.presentation.viewmodel.LoginViewModel
 import com.careline.clinicapp.feature.settings.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.runBlocking
-import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -59,8 +54,25 @@ class MainActivity : ComponentActivity() {
                 .collectAsStateWithLifecycle()
 
             val navController = rememberNavController()
+            val context = LocalContext.current
+            val localizedContext = remember(language) {
+                LocaleManager.applyLocale(context, language)
+            }
 
             CarLineTheme(darkTheme = isDark) {
+
+                CompositionLocalProvider(  LocalContext provides localizedContext) {
+                    AppNavGraph(
+                        navController = navController,
+                        authEventBus = authEventBus,
+                        startDestination = startDestination,
+                    )
+                }
+//                CompositionLocalProvider(
+//                    LocalContext provides localizedContext,
+//                    content = Text("jisjijsifjdjfd")
+//                )
+
                 DevToolsOverlay(
                     isDark = isDark,
                     isArabic = language == "ar",
@@ -71,11 +83,7 @@ class MainActivity : ComponentActivity() {
                     },
                 ) {
                     ProvideLocale(languageCode = language) {
-                        AppNavGraph(
-                            navController = navController,
-                            authEventBus = authEventBus,
-                            startDestination = startDestination,
-                        )
+
                     }
                 }
             }

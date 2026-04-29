@@ -24,6 +24,6 @@ class StartDestinationResolver @Inject constructor(
 
         val token = dataStore.getAuthToken()
         return if (token != null) Screen.Dashboard.route
-        else Screen.Login.route
+        else Screen.Auth.route
     }
 }

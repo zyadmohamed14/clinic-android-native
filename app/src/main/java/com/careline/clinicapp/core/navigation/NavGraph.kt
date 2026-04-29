@@ -11,6 +11,7 @@ import androidx.navigation.navArgument
 import com.careline.clinicapp.core.api.interceptor.AuthEvent
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
 import com.careline.clinicapp.feature.auth.presentation.screen.AuthScreen
+import com.careline.clinicapp.feature.onboarding.OnboardingScreen
 
 @Composable
 fun AppNavGraph(
@@ -28,7 +29,7 @@ fun AppNavGraph(
         authEventBus.events.collect { event ->
             when (event) {
                 AuthEvent.Unauthorized -> {
-                    navController.navigate(Screen.Login.route) {
+                    navController.navigate(Screen.Auth.route) {
                         // Clear the entire back stack so the user can't
                         // press Back to return to an authenticated screen.
                         // Flutter equivalent: Navigator.pushAndRemoveUntil()
@@ -46,19 +47,18 @@ fun AppNavGraph(
 
         // ── Onboarding ────────────────────────────────────────────────────────
         composable(Screen.Onboarding.route) {
-            // OnboardingScreen(
-            //     onComplete = {
-            //         navController.navigate(Screen.Login.route) {
-            //             popUpTo(Screen.Onboarding.route) { inclusive = true }
-            //         }
-            //     }
-            // )
-            // Placeholder until Feature 1
-            androidx.compose.material3.Text("Onboarding Screen")
+            OnboardingScreen(
+                onFinish = {
+                    navController.navigate(Screen.Auth.route) {
+                        popUpTo(Screen.Onboarding.route) { inclusive = true }
+                    }
+                }
+            )
+
         }
 
         // ── Auth ──────────────────────────────────────────────────────────────
-        composable(Screen.Login.route) {
+        composable(Screen.Auth.route) {
             AuthScreen()
         }
 
