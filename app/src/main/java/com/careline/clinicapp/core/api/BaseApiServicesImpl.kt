@@ -1,5 +1,6 @@
 package com.careline.clinicapp.core.api
 
+import com.careline.clinicapp.core.api.model.HttpMethod
 import javax.inject.Inject
 
 

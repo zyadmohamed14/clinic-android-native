@@ -1,4 +1,4 @@
-package com.careline.clinicapp.core.api
+package com.careline.clinicapp.core.api.model
 
 enum class HttpMethod {
     GET,

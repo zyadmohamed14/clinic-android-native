@@ -1,5 +1,6 @@
 package com.careline.clinicapp.core.common
 
+import com.careline.clinicapp.core.api.model.ApiJson
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import kotlinx.serialization.json.Json
@@ -12,7 +13,7 @@ import java.net.SocketTimeoutException
 
 object ErrorHandler {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = ApiJson.instance
 
     fun handle(throwable: Throwable): AppFailure = when (throwable) {
         is HttpException -> {

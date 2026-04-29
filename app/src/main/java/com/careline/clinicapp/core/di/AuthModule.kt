@@ -21,9 +21,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AuthModule {
 
-    @Provides
-    @Singleton
-    fun provideAuthEventBus(): AuthEventBus = AuthEventBus()
+//    @Provides
+//    @Singleton
+//    fun provideAuthEventBus(): AuthEventBus = AuthEventBus()
     // -----------------------------
     // Remote Data Source
     // -----------------------------
@@ -60,7 +60,8 @@ object AuthModule {
     ): LoginUseCase {
         return LoginUseCase(
             repository = repository,
-            dataStore = dataStore
+            dataStore = dataStore,
+            json = Json
         )
     }
 }

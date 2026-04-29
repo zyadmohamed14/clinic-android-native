@@ -7,6 +7,7 @@ import com.careline.clinicapp.core.api.BaseApiServicesImpl
 import com.careline.clinicapp.core.api.RetrofitApiService
 import com.careline.clinicapp.core.api.interceptor.AuthInterceptor
 import com.careline.clinicapp.core.api.interceptor.UnauthorizedInterceptor
+import com.careline.clinicapp.core.api.model.ApiJson
 import com.careline.clinicapp.core.constants.AppConstants
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
@@ -28,12 +29,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideJson(): Json = Json {
-        ignoreUnknownKeys = true
-        isLenient = true
-        coerceInputValues = true
-        explicitNulls = false   // don't serialize null fields
-    }
+    fun provideJson(): Json = ApiJson.instance
 
     @Provides
     @Singleton

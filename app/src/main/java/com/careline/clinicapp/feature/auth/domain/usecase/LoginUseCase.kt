@@ -10,10 +10,13 @@ import com.careline.clinicapp.feature.auth.domain.repository.AuthRepository
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class LoginUseCase @Inject constructor(
     private val repository: AuthRepository,
     private val dataStore: AppDataStore,
+    private val json: Json
 ) {
     operator fun invoke(request: LoginRequest): Flow<Resource<User>> = flow {
         emit(Resource.Loading)
@@ -21,7 +24,7 @@ class LoginUseCase @Inject constructor(
             val user = repository.login(request)
             // Persist token immediately after successful login
             dataStore.saveAuthToken(user.token)
-            dataStore.saveUserData(user.toJson())
+            dataStore.saveUserData(json.encodeToString(user))
             emit(Resource.Success(user))
         } catch (throwable: Throwable,) {
             val root = throwable.rootCause()
