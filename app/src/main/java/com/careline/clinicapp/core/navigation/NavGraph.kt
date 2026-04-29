@@ -1,96 +1,111 @@
 package com.careline.clinicapp.core.navigation
 
 
-
-import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-
-
-
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusDirection
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewModelScope
-import coil.compose.AsyncImage
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
-import com.airbnb.lottie.compose.animateLottieCompositionAsState
-import com.airbnb.lottie.compose.rememberLottieComposition
-import com.careline.clinicapp.R
-import com.careline.clinicapp.core.ants.AppStrings
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.careline.clinicapp.core.api.interceptor.AuthEvent
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
+import com.careline.clinicapp.feature.auth.presentation.screen.AuthScreen
 
-import com.careline.clinicapp.core.constants.DrawableResources
-import com.careline.clinicapp.core.theme.extraColors
-import com.careline.clinicapp.core.ui.components.AppButton
-import com.careline.clinicapp.core.ui.components.AppButtonType
-import com.careline.clinicapp.core.ui.components.EmailTextField
-import com.careline.clinicapp.core.ui.components.PasswordTextField
-import dagger.hilt.android.lifecycle.HiltViewModel
-import jakarta.inject.Inject
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-
-/**
- * Temporary theme preview — replaced with real navigation in Step 5.
- */
 @Composable
-fun NavGraph(
+fun AppNavGraph(
+    navController: NavHostController,
     authEventBus: AuthEventBus,
+    startDestination: String,
 ) {
-    val composition by rememberLottieComposition(
-        LottieCompositionSpec.RawRes(R.raw.heart_pop)
-    )
-    val progress by animateLottieCompositionAsState(
-        composition = composition,
-        iterations = LottieConstants.IterateForever,
-    )
-
-
-    // Listen for 401 events from the network layer
+    // ── Wire 401 events to navigation ─────────────────────────────────────────
+    // This is the Android equivalent of Flutter's:
+    //   if (error.response?.statusCode == 401) { AppRouter.navigatorKey... }
+    // We use LaunchedEffect so it only runs once and respects the Composable
+    // lifecycle. The event travels from OkHttp (background thread) → here
+    // (main thread) via AuthEventBus SharedFlow.
     LaunchedEffect(Unit) {
         authEventBus.events.collect { event ->
             when (event) {
-                is AuthEvent.Unauthorized -> {
-                    // TODO: navigate to login in Step 6 when
-                    // NavController is set up
+                AuthEvent.Unauthorized -> {
+                    navController.navigate(Screen.Login.route) {
+                        // Clear the entire back stack so the user can't
+                        // press Back to return to an authenticated screen.
+                        // Flutter equivalent: Navigator.pushAndRemoveUntil()
+                        popUpTo(0) { inclusive = true }
+                    }
                 }
             }
         }
     }
 
+    NavHost(
+        navController = navController,
+        startDestination = startDestination,
+    ) {
 
+        // ── Onboarding ────────────────────────────────────────────────────────
+        composable(Screen.Onboarding.route) {
+            // OnboardingScreen(
+            //     onComplete = {
+            //         navController.navigate(Screen.Login.route) {
+            //             popUpTo(Screen.Onboarding.route) { inclusive = true }
+            //         }
+            //     }
+            // )
+            // Placeholder until Feature 1
+            androidx.compose.material3.Text("Onboarding Screen")
+        }
+
+        // ── Auth ──────────────────────────────────────────────────────────────
+        composable(Screen.Login.route) {
+            AuthScreen()
+        }
+
+        // ── Dashboard ─────────────────────────────────────────────────────────
+        composable(Screen.Dashboard.route) {
+            // DashboardScreen(navController = navController)
+            // Placeholder until Feature 3
+            androidx.compose.material3.Text("Dashboard Screen")
+        }
+
+        // ── Clinic Details — with argument ────────────────────────────────────
+        composable(
+            route = Screen.ClinicDetails.route,
+            arguments = listOf(
+                navArgument(Screen.ClinicDetails.ARG_CLINIC_ID) {
+                    type = NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            val clinicId = backStackEntry.arguments
+                ?.getInt(Screen.ClinicDetails.ARG_CLINIC_ID) ?: return@composable
+
+            // ClinicDetailsScreen(clinicId = clinicId)
+            androidx.compose.material3.Text("Clinic Details: $clinicId")
+        }
+
+        // ── Booking ───────────────────────────────────────────────────────────
+        composable(
+            route = Screen.Booking.route,
+            arguments = listOf(
+                navArgument(Screen.Booking.ARG_CLINIC_ID) {
+                    type = NavType.IntType
+                },
+                navArgument(Screen.Booking.ARG_DOCTOR_ID) {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val clinicId = backStackEntry.arguments
+                ?.getInt(Screen.Booking.ARG_CLINIC_ID) ?: return@composable
+            val doctorId = backStackEntry.arguments
+                ?.getString(Screen.Booking.ARG_DOCTOR_ID) ?: return@composable
+
+            // BookingScreen(clinicId = clinicId, doctorId = doctorId)
+            androidx.compose.material3.Text("Booking: $clinicId / $doctorId")
+        }
+    }
 }
 
 

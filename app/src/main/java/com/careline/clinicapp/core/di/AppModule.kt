@@ -14,7 +14,6 @@ abstract class AppModule {
 
     @Binds
     @Singleton
-    abstract fun bindAppDataStore(
-        impl: AppDataStoreImpl,
-    ): AppDataStore
+    abstract fun bindAppDataStore(impl: AppDataStoreImpl): AppDataStore
+
 }
