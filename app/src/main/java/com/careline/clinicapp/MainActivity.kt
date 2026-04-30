@@ -1,6 +1,9 @@
 package com.careline.clinicapp
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.ContextWrapper
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -54,7 +57,9 @@ class MainActivity : ComponentActivity() {
                 .collectAsStateWithLifecycle()
 
             val navController = rememberNavController()
-            val context = LocalContext.current
+            val activity = LocalContext.current.findActivity()
+
+            val context = activity ?: LocalContext.current
             val localizedContext = remember(language) {
                 LocaleManager.applyLocale(context, language)
             }
@@ -68,10 +73,6 @@ class MainActivity : ComponentActivity() {
                         startDestination = startDestination,
                     )
                 }
-//                CompositionLocalProvider(
-//                    LocalContext provides localizedContext,
-//                    content = Text("jisjijsifjdjfd")
-//                )
 
                 DevToolsOverlay(
                     isDark = isDark,
@@ -106,4 +107,10 @@ fun ProvideLocale(
         LocalContext provides localizedContext,
         content = content,
     )
+}
+
+fun Context.findActivity(): Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.findActivity()
+    else -> null
 }

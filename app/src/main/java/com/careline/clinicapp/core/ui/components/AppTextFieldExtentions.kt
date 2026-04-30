@@ -10,9 +10,12 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.core.R
+import com.careline.clinicapp.core.ants.AppStrings
 
 /*
  * WHY WRAPPER COMPOSABLES INSTEAD OF FACTORY METHODS?
@@ -42,7 +45,7 @@ fun EmailTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    hint: String = "Email address",
+    hint: Int = AppStrings.AUTH_EMAIL,
     label: String? = "Email",
     isError: Boolean = false,
     errorMessage: String? = null,
@@ -52,7 +55,7 @@ fun EmailTextField(
     AppTextField(
         value = value,
         onValueChange = onValueChange,
-        hint = hint,
+        hint = stringResource(hint),
         modifier = modifier,
         label = label,
         isError = isError,
@@ -81,7 +84,7 @@ fun PasswordTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    hint: String = "Password",
+    hint: Int = AppStrings.AUTH_PASSWORD,
     label: String? = "Password",
     isError: Boolean = false,
     errorMessage: String? = null,
@@ -92,7 +95,7 @@ fun PasswordTextField(
     AppTextField(
         value = value,
         onValueChange = onValueChange,
-        hint = hint,
+        hint = stringResource(hint),
         modifier = modifier,
         label = label,
         isError = isError,

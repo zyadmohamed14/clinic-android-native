@@ -7,7 +7,9 @@ import java.util.Locale
 object LocaleManager {
 
     fun applyLocale(context: Context, languageCode: String): Context {
-        val locale = Locale(languageCode)
+        // Map language code to the correct Locale
+        // "ar" → Locale("ar", "EG") to match values-ar-rEG folder
+        val locale = getLocale(languageCode)
         Locale.setDefault(locale)
 
         val config = Configuration(context.resources.configuration)
@@ -17,5 +19,9 @@ object LocaleManager {
         return context.createConfigurationContext(config)
     }
 
-    fun getLocale(languageCode: String): Locale = Locale(languageCode)
+    fun getLocale(languageCode: String): Locale = when (languageCode) {
+        "ar" -> Locale("ar", "EG")  // matches values-ar-rEG
+  //      "en" -> Locale("en", "US")  // matches values-en-rUS if you add one
+        else -> Locale(languageCode)
+    }
 }
