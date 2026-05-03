@@ -32,7 +32,7 @@ interface AppDataStore {
 
     suspend fun setLanguage(languageCode: String)
     fun getLanguageFlow(): Flow<String>
-
+    suspend fun getLanguageOnce(): String
     suspend fun setOnboardingDone(done: Boolean)
     suspend fun isOnboardingDone(): Boolean
 

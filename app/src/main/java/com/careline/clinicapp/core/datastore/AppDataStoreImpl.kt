@@ -64,7 +64,11 @@ class AppDataStoreImpl  @Inject constructor(
         }
     }
 
-
+    override suspend fun getLanguageOnce(): String {
+        return context.dataStore.data
+            .firstOrNull()
+            ?.get(KEY_LANGUAGE) ?: "ar"
+    }
     override suspend fun setDarkMode(isDark: Boolean) {
         context.dataStore.edit { prefs ->
             prefs[KEY_IS_DARK_MODE] = isDark

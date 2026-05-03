@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
@@ -19,6 +20,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
+import com.careline.clinicapp.core.datastore.AppDataStore
 import com.careline.clinicapp.core.locale.LocaleManager
 import com.careline.clinicapp.core.navigation.AppNavGraph
 import com.careline.clinicapp.core.navigation.StartDestinationResolver
@@ -37,6 +39,7 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var startDestinationResolver: StartDestinationResolver
+   // @Inject lateinit var appDataStore : AppDataStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,16 +60,27 @@ class MainActivity : ComponentActivity() {
                 .collectAsStateWithLifecycle()
 
             val navController = rememberNavController()
-            val activity = LocalContext.current.findActivity()
 
-            val context = activity ?: LocalContext.current
+
+            val context =  LocalContext.current
             val localizedContext = remember(language) {
                 LocaleManager.applyLocale(context, language)
             }
-
+//            LaunchedEffect(Unit) {
+//                settingsViewModel.recreateEvent.collect {
+//                    recreate()
+//                }
+//            }
             CarLineTheme(darkTheme = isDark) {
 
-                CompositionLocalProvider(  LocalContext provides localizedContext) {
+               // this method localized not work
+//                AppNavGraph(
+//                    navController = navController,
+//                    authEventBus = authEventBus,
+//                    startDestination = startDestination,
+//                )
+               // this method work  but makes conflict with hilt context so that the hilt can not provides any vieew models as it needs activity ot frament context
+                CompositionLocalProvider(LocalContext provides localizedContext ) {
                     AppNavGraph(
                         navController = navController,
                         authEventBus = authEventBus,
@@ -83,9 +97,7 @@ class MainActivity : ComponentActivity() {
                         settingsViewModel.setLanguage(next)
                     },
                 ) {
-                    ProvideLocale(languageCode = language) {
 
-                    }
                 }
             }
         }
@@ -109,8 +121,3 @@ fun ProvideLocale(
     )
 }
 
-fun Context.findActivity(): Activity? = when (this) {
-    is Activity -> this
-    is ContextWrapper -> baseContext.findActivity()
-    else -> null
-}
