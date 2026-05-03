@@ -21,6 +21,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
 import com.careline.clinicapp.core.datastore.AppDataStore
+import com.careline.clinicapp.core.locale.AppPreferences
 import com.careline.clinicapp.core.locale.LocaleManager
 import com.careline.clinicapp.core.navigation.AppNavGraph
 import com.careline.clinicapp.core.navigation.StartDestinationResolver
@@ -40,7 +41,10 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var startDestinationResolver: StartDestinationResolver
    // @Inject lateinit var appDataStore : AppDataStore
-
+   override fun attachBaseContext(newBase: Context) {
+       val language = AppPreferences.getLanguage(newBase)
+       super.attachBaseContext(LocaleManager.applyLocale(newBase, language))
+   }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -66,27 +70,25 @@ class MainActivity : ComponentActivity() {
             val localizedContext = remember(language) {
                 LocaleManager.applyLocale(context, language)
             }
-//            LaunchedEffect(Unit) {
-//                settingsViewModel.recreateEvent.collect {
-//                    recreate()
-//                }
-//            }
+            LaunchedEffect(Unit) {
+                settingsViewModel.recreateEvent.collect { event ->
+                    AppPreferences.setLanguage(
+                        context = this@MainActivity,
+                        code = event.newLanguage,
+                    )
+                    recreate()
+                }
+            }
+
             CarLineTheme(darkTheme = isDark) {
 
                // this method localized not work
-//                AppNavGraph(
-//                    navController = navController,
-//                    authEventBus = authEventBus,
-//                    startDestination = startDestination,
-//                )
-               // this method work  but makes conflict with hilt context so that the hilt can not provides any vieew models as it needs activity ot frament context
-                CompositionLocalProvider(LocalContext provides localizedContext ) {
-                    AppNavGraph(
-                        navController = navController,
-                        authEventBus = authEventBus,
-                        startDestination = startDestination,
-                    )
-                }
+                AppNavGraph(
+                    navController = navController,
+                    authEventBus = authEventBus,
+                    startDestination = startDestination,
+                )
+
 
                 DevToolsOverlay(
                     isDark = isDark,

@@ -12,10 +12,13 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+data class RecreateEvent(val newLanguage: String)
+
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    private val dataStore: AppDataStore
+    private val dataStore: AppDataStore,
 ) : ViewModel() {
+
     val isDarkMode: StateFlow<Boolean> = dataStore.isDarkModeFlow()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
@@ -25,17 +28,22 @@ class SettingsViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = "ar",
         )
-    private val _recreateEvent = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
-    val recreateEvent: SharedFlow<Unit> = _recreateEvent.asSharedFlow()
+
+    private val _recreateEvent = MutableSharedFlow<RecreateEvent>(extraBufferCapacity = 1)
+    val recreateEvent: SharedFlow<RecreateEvent> = _recreateEvent.asSharedFlow()
+
     fun toggleTheme() {
         viewModelScope.launch {
             dataStore.setDarkMode(!isDarkMode.value)
         }
     }
+
     fun setLanguage(code: String) {
         viewModelScope.launch {
+            // 1. Persist to DataStore (source of truth for the rest of the app)
             dataStore.setLanguage(code)
-            _recreateEvent.emit(Unit)  // Signal MainActivity to recreate
+            // 2. Signal MainActivity to sync SharedPreferences then recreate
+            _recreateEvent.emit(RecreateEvent(newLanguage = code))
         }
     }
 }
