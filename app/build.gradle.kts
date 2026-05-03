@@ -125,6 +125,7 @@ android {
 
 dependencies {
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
     implementation(libs.lottie.compose)
     // Core
     implementation(libs.androidx.splashscreen)

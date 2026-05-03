@@ -1,27 +1,22 @@
 package com.careline.clinicapp
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.content.ContextWrapper
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.careline.clinicapp.core.api.interceptor.AuthEventBus
-import com.careline.clinicapp.core.datastore.AppDataStore
-import com.careline.clinicapp.core.locale.AppPreferences
+import com.careline.clinicapp.core.datastore.AppStorage
 import com.careline.clinicapp.core.locale.LocaleManager
 import com.careline.clinicapp.core.navigation.AppNavGraph
 import com.careline.clinicapp.core.navigation.StartDestinationResolver
@@ -42,17 +37,15 @@ class MainActivity : ComponentActivity() {
     lateinit var startDestinationResolver: StartDestinationResolver
    // @Inject lateinit var appDataStore : AppDataStore
    override fun attachBaseContext(newBase: Context) {
-       val language = AppPreferences.getLanguage(newBase)
+       // Single static call — no Hilt needed here
+       val language = AppStorage.getLanguageEarly(newBase)
        super.attachBaseContext(LocaleManager.applyLocale(newBase, language))
    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Resolve start destination once, synchronously at startup.
-        // This is safe here because it's a fast local DataStore read,
-        // not a network call. We do it before setContent so the NavHost
-        // receives the correct startDestination on first composition.
+
         val startDestination = runBlocking { startDestinationResolver.resolve() }
 
         setContent {
@@ -72,10 +65,8 @@ class MainActivity : ComponentActivity() {
             }
             LaunchedEffect(Unit) {
                 settingsViewModel.recreateEvent.collect { event ->
-                    AppPreferences.setLanguage(
-                        context = this@MainActivity,
-                        code = event.newLanguage,
-                    )
+                    // SharedPreferences is already updated inside ViewModel
+                    // Just recreate — attachBaseContext will pick up the new value
                     recreate()
                 }
             }
